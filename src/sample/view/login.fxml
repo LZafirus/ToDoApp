@@ -9,17 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #5d4037;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #5d4037;"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.LoginController">
    <children>
       <Label alignment="CENTER" layoutY="89.0" prefHeight="51.0" prefWidth="700.0" style="-fx-background-color: #321911;" text="Login" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="258.0" layoutY="168.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your login " />
-      <PasswordField layoutX="258.0" layoutY="220.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your password" />
-      <Button layoutX="324.0" layoutY="296.0" mnemonicParsing="false" text="Button" textFill="#5d4037" />
+      <TextField fx:id="loginUsername" layoutX="258.0" layoutY="168.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your login " />
+      <PasswordField fx:id="loginPassword" layoutX="258.0" layoutY="220.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your password" />
+      <Button fx:id="loginButton" layoutX="324.0" layoutY="296.0" mnemonicParsing="false" text="Login in" textFill="#5d4037" />
       <ImageView fitHeight="95.0" fitWidth="118.0" layoutX="291.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/koala-icon-7.jpg" />
