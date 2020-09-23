@@ -23,5 +23,9 @@ public class DetailsController {
 
     }
 
+    void setName(String name) {
+        detailsWelcome.setText("Welcome " + name);
+    }
+
 
 }
