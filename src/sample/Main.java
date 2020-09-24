@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 
@@ -12,6 +13,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+        MySqlConnector connector = new MySqlConnector();
+        connector.connect();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sample/view/login.fxml"));
         primaryStage.setTitle("Personal To-Do Machine");
