@@ -26,6 +26,9 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
+    private Button loginSignUp;
+
+    @FXML
     void initialize(){
 
 

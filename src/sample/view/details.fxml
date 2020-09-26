@@ -6,23 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.DetailsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.DetailsController">
    <children>
-      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" contentDisplay="TOP" layoutY="25.0" prefHeight="40.0" prefWidth="600.0"
-             style="-fx-background-color: #321911;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" contentDisplay="TOP" layoutY="-6.0" prefHeight="40.0" prefWidth="601.0" style="-fx-background-color: #321911;" text="Welcome" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="65.0" prefHeight="125.0" prefWidth="600.0" style="-fx-background-color: #5d4037;" />
-      <ListView layoutY="190.0" prefHeight="49.0" prefWidth="600.0" style="-fx-background-color: #8b6b61;" />
-      <Label fx:id="detailsLabelOne" alignment="TOP_CENTER" layoutX="56.0" layoutY="203.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
+      <AnchorPane layoutY="34.0" prefHeight="125.0" prefWidth="601.0" style="-fx-background-color: #5d4037;" />
+      <ListView layoutY="159.0" prefHeight="49.0" prefWidth="601.0" style="-fx-background-color: #8b6b61;" />
+      <Label fx:id="detailsLabelOne" alignment="TOP_CENTER" layoutX="59.0" layoutY="172.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="detailsLabelTwo" alignment="TOP_CENTER" layoutX="261.0" layoutY="203.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
+      <Label fx:id="detailsLabelTwo" alignment="TOP_CENTER" layoutX="261.0" layoutY="172.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -30,7 +28,7 @@
             <ColorAdjust />
          </effect>
       </Label>
-      <Label fx:id="detailsLabelThree" alignment="TOP_CENTER" layoutX="452.0" layoutY="203.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
+      <Label fx:id="detailsLabelThree" alignment="TOP_CENTER" layoutX="454.0" layoutY="172.0" prefHeight="23.0" prefWidth="79.0" text="Label" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

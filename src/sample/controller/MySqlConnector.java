@@ -1,4 +1,4 @@
-package sample.mysql;
+package sample.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,7 +25,7 @@ public class MySqlConnector {
                 connection = DriverManager.getConnection(url, user, password);
                 Statement statement = connection.createStatement();
 
-                String query = "CREATE DATABASE bazaTestowa";
+                String query = "CREATE DATABASE IF NOT EXISTS bazaTestowa";
 
                 statement.execute(query);
 

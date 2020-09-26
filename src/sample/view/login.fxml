@@ -4,26 +4,26 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #5d4037;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
    <children>
-      <Label alignment="CENTER" layoutY="89.0" prefHeight="51.0" prefWidth="700.0" style="-fx-background-color: #321911;" text="Login" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="loginUsername" layoutX="258.0" layoutY="168.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your login " />
-      <PasswordField fx:id="loginPassword" layoutX="258.0" layoutY="220.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your password" />
-      <Button fx:id="loginButton" layoutX="324.0" layoutY="296.0" mnemonicParsing="false" text="Login in" textFill="#5d4037" />
-      <ImageView fitHeight="95.0" fitWidth="118.0" layoutX="291.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/koala-icon-7.jpg" />
-         </image>
-      </ImageView>
+      <BorderPane layoutY="63.0" prefHeight="133.0" prefWidth="700.0" style="-fx-background-color: #896a60;" />
+      <TextField fx:id="loginUsername" layoutX="258.0" layoutY="84.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your login " />
+      <PasswordField fx:id="loginPassword" layoutX="258.0" layoutY="136.0" prefHeight="31.0" prefWidth="184.0" promptText="Enter your password" />
+      <Button fx:id="loginButton" layoutX="321.0" layoutY="221.0" mnemonicParsing="false" text="Login in" />
+      <AnchorPane prefHeight="16.0" prefWidth="700.0" style="-fx-background-color: #321911;" />
+      <BorderPane layoutY="16.0" prefHeight="47.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;">
+         <left>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="363.0" style="-fx-background-color: #5b3f36;" text="Welcome to your personal To-Do Machine" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
+         </left>
+      </BorderPane>
+      <Button fx:id="loginSignUp" layoutX="322.0" layoutY="267.0" mnemonicParsing="false" text="Sign up" />
    </children>
 </AnchorPane>
