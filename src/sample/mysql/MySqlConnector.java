@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.mysql;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,6 +14,7 @@ public class MySqlConnector {
     String url = "jdbc:mysql://localhost:3306/";
     String user = "root";
     String password = "";
+    String dataBase = "machinetodo";
 
     Connection connection;
 

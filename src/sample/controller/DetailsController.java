@@ -10,7 +10,7 @@ public class DetailsController {
     private Label detailsWelcome;
 
     @FXML
-    private Label detailsLabelOne;
+    private Label detailsAddTask;
 
     @FXML
     private Label detailsLabelTwo;

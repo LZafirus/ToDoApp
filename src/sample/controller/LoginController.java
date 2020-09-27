@@ -31,43 +31,38 @@ public class LoginController {
     @FXML
     void initialize(){
 
+        String loginText = loginUsername.getText().trim();
+        String passwordText = loginPassword.getText().trim();
 
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                    loginUserIn();
-            }
-        });
-    }
-
-    private void loginUserIn() {
-
-        loginButton.getScene().getWindow().hide();
-
-        if(!loginUsername.getText().toString().trim().equals("")
-                && !loginPassword.getText().toString().trim().equals(""))
-        {
+        loginSignUp.setOnAction(event -> {
+            loginSignUp.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/view/details.fxml"));
-            try{
+            loader.setLocation(getClass().getResource("/sample/view/signup.fxml"));
+
+            try {
                 loader.load();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.showAndWait();
 
-            DetailsController detailsController = loader.getController();
-            detailsController.setName(loginUsername.getText());
+        });
 
-            stage.show();
-
-
-        }
-
+        loginButton.setOnAction(event -> {
+            if (!loginText.equals("") || !loginPassword.equals("")){
+                loginUser(loginText, passwordText);
+        } else {
+                System.out.println("error");
+            }
+        });
     }
+
+    private void loginUser(String userName, String userPassword) {
+    }
+
 
 }
