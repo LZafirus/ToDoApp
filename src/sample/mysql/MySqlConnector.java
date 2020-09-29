@@ -18,7 +18,7 @@ public class MySqlConnector {
 
     Connection connection;
 
-    public void connect() {
+    public void connect(String query) {
         System.out.println("working");
         {
             try {
@@ -26,14 +26,29 @@ public class MySqlConnector {
                 connection = DriverManager.getConnection(url, user, password);
                 Statement statement = connection.createStatement();
 
-                String query = "CREATE DATABASE IF NOT EXISTS bazaTestowa";
+                String database = "use machinetodo";
+                statement.execute(database);
 
                 statement.execute(query);
+                connection.close();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }
+    }
+
+    public void signUpUser(){
+
+        String insertTest = "INSERT INTO USERS (name, surname, login, password) values ('dawid', 'dawid', 'dawid', 'dawid');";
+        String insert = "INSERT INTO " + ConstDataBase.usersTable +
+                "(" + ConstDataBase.usersName + ", " + ConstDataBase.usersSurname + ", " +
+                ConstDataBase.usersLogin + ", " + ConstDataBase.usersPassword +
+                ") VALUES (?, ?, ?, ?);";
+
+        connect(insertTest);
+
+
     }
 
 }
