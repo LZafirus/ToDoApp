@@ -14,8 +14,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        MySqlConnector connector = new MySqlConnector();
-        connector.connect();
+        //MySqlConnector connector = new MySqlConnector();
+        //connector.connect();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sample/view/login.fxml"));
         primaryStage.setTitle("Personal To-Do Machine");

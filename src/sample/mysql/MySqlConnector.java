@@ -8,9 +8,9 @@ import java.sql.Statement;
 
 public class MySqlConnector {
 
+
     //TODO I am aware that this is not save - only for testing if working reasons
     //FIXME remember to create way to create user etc via login pane
-
     String url = "jdbc:mysql://localhost:3306/";
     String user = "root";
     String password = "";
