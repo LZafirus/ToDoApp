@@ -25,12 +25,14 @@ public class SignUpController {
     @FXML
     private Button signUp;
 
+    @FXML
     void initialize(){
 
         MySqlConnector connector = new MySqlConnector();
 
         signUp.setOnAction(event -> {
-            System.out.println("klik");
+            connector.connect();
+
             try {
                 connector.signUpUser(signUpName.getText(), signUpSurname.getText(),
                         signUpLogin.getText(), signUpPassword.getText());
@@ -41,5 +43,4 @@ public class SignUpController {
 
 
     }
-
 }
