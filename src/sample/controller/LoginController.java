@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 
@@ -34,8 +33,7 @@ public class LoginController {
         String passwordText = loginPassword.getText().trim();
 
         loginSignUp.setOnAction(event -> {
-            MySqlConnector connector = new MySqlConnector();
-            connector.signUpUser();
+
             loginSignUp.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/signup.fxml"));
