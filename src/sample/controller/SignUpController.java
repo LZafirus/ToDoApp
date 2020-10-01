@@ -28,19 +28,24 @@ public class SignUpController {
     @FXML
     void initialize(){
 
-        MySqlConnector connector = new MySqlConnector();
-
         signUp.setOnAction(event -> {
-            connector.connect();
+            createUser();
 
-            try {
-                connector.signUpUser(signUpName.getText(), signUpSurname.getText(),
-                        signUpLogin.getText(), signUpPassword.getText());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         });
 
-
     }
+    
+    private void createUser() {
+
+        MySqlConnector connector = new MySqlConnector();
+        connector.connect();
+
+        try {
+            connector.signUpUser(signUpName.getText(), signUpSurname.getText(),
+                    signUpLogin.getText(), signUpPassword.getText());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }
