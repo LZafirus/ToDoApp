@@ -55,8 +55,12 @@ public class LoginController {
             if (!loginText.equals("") || !loginPassword.equals("")){
                 loginUser(loginText, passwordText);
         } else {
-                System.out.println("error");
+                System.err.println("Login or password is missing");
             }
+        });
+
+        loginButton.setOnAction(event -> {
+            loginUser(loginUsername.getText(), loginPassword.getText());
         });
     }
 

@@ -48,6 +48,9 @@ public class MySqlConnector {
         }
     }
 
+
+
+
     public void disconnect() throws SQLException {
        Statement statement = connection.createStatement();
        statement.close();
