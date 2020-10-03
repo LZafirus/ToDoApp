@@ -1,5 +1,7 @@
 package sample.mysql;
 
+import sample.model.User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,7 +31,7 @@ public class MySqlConnector {
             }
     }
 
-    public void signUpUser(String name, String surname, String login, String password) throws SQLException {
+    public void signUpUser(User user) throws SQLException {
 
         try {
             Statement statement = connection.createStatement();
@@ -37,10 +39,10 @@ public class MySqlConnector {
             String insert = "INSERT INTO " + ConstDataBase.usersTable +
                     "(" + ConstDataBase.usersName + ", " + ConstDataBase.usersSurname + ", " +
                     ConstDataBase.usersLogin + ", " + ConstDataBase.usersPassword +
-                    ") VALUES ('" + name + "', '"
-                                    + surname + "', '"
-                                     + login + "', '"
-                                        + password + "');";
+                    ") VALUES ('" + user.getFirstName() + "', '"
+                                    + user.getLastName() + "', '"
+                                     + user.getLogin() + "', '"
+                                        + user.getPassword() + "');";
             statement.execute(insert);
 
         } catch (SQLException throwables) {
