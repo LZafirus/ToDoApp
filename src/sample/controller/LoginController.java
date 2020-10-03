@@ -32,6 +32,10 @@ public class LoginController {
         String loginText = loginUsername.getText().trim();
         String passwordText = loginPassword.getText().trim();
 
+        loginButton.setOnAction(event -> {
+
+        });
+
         loginSignUp.setOnAction(event -> {
 
             loginSignUp.getScene().getWindow().hide();
@@ -65,6 +69,11 @@ public class LoginController {
     }
 
     private void loginUser(String userName, String userPassword) {
+        if (!userName.equals("") || !userPassword.equals("")){
+
+        } else {
+
+        }
     }
 
 

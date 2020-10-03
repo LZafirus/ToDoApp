@@ -58,4 +58,19 @@ public class MySqlConnector {
        statement.close();
     }
 
+    public boolean isUserLogged(User user) throws SQLException {
+        if(!user.getLogin().equals("") || !user.getPassword().equals("")){
+
+            String query = "SELECT * FROM " + ConstDataBase.usersTable +
+                    " WHERE " + ConstDataBase.usersLogin + " =" + user.getLogin()
+                    + " AND " + ConstDataBase.usersPassword + " =" + user.getPassword();
+            Statement statement = connection.createStatement();
+            statement.executeQuery();
+        } else {
+
+        }
+
+        return false;
+    }
+
 }
