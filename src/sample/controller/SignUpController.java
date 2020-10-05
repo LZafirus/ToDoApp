@@ -31,15 +31,19 @@ public class SignUpController {
 
         signUp.setOnAction(event -> {
             createUser();
-
         });
-
     }
 
     private void createUser() {
 
         MySqlConnector connector = new MySqlConnector();
-        connector.connect();
+        try {
+            connector.connect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         String name = signUpName.getText();
         String surname = signUpSurname.getText();

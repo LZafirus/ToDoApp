@@ -31,13 +31,9 @@ public class LoginController {
     @FXML
     private Button loginSignUp;
 
-    private MySqlConnector connector;
-
     @FXML
     void initialize(){
 
-        connector = new MySqlConnector();
-        
         loginButton.setOnAction(event -> {
 
             String loginText = loginUsername.getText().trim();
@@ -46,20 +42,22 @@ public class LoginController {
             User user  = new User();
             user.setLogin(loginText);
             user.setPassword(passwordText);
+
+            MySqlConnector connector = new MySqlConnector();
             try {
-               ResultSet userRow = connector.getUser(user);
-               int counter = 0;
-
-               while (userRow.next()){
-                   counter++;
-               }
-
-               if(counter == 1){
-                   System.out.println("login successful");
-               }
+                connector.connect();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+            try {
+                connector.loginInUser(user);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+
         });
 
         loginSignUp.setOnAction(event -> {
@@ -78,7 +76,6 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.showAndWait();
-
         });
     }
 }

@@ -2,6 +2,7 @@ package sample.mysql;
 
 import sample.model.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.*;
 
 public class MySqlConnector {
@@ -17,15 +18,12 @@ public class MySqlConnector {
 
     Connection connection;
 
-    public void connect() {
+    public Connection connect() throws ClassNotFoundException, SQLException{
 
-        try {
             connection = DriverManager.getConnection(url, user, password);
-            Statement statement = connection.createStatement();
+            Class.forName("com.mysql.jdbc.Driver");
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        return connection;
     }
 
     public void signUpUser(User user) throws SQLException {
@@ -47,27 +45,20 @@ public class MySqlConnector {
         }
     }
 
-    public void disconnect() throws SQLException {
-       Statement statement = connection.createStatement();
-       statement.close();
-    }
-
-    public ResultSet getUser(User user) throws SQLException {
-        ResultSet resultSet = null;
-
-        if(!user.getLogin().equals("") || !user.getPassword().equals("")){
-            Statement statement = connection.createStatement();
-
-            String query = "SELECT * FROM " + ConstDataBase.usersTable +
-                    " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
-                    + "' AND " + ConstDataBase.usersPassword + " ='" + user.getPassword() + "';";
-
-            resultSet = statement.executeQuery(query);
-        } else {
-            System.out.println("Enter correct credentials");
+    public void loginInUser(User user) throws SQLException {
+        ResultSet resultSet;
+        Statement statement = connection.createStatement();
+        String query = "SELECT * FROM users WHERE login = '" + user.getLogin() + "';";
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()){
+            System.out.println(
+                    "id:"+resultSet.getString("user_id"));
         }
 
-       // return resultSet;
-        return resultSet;
+    }
+
+    public void disconnect() throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.close();
     }
 }
