@@ -8,8 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.model.User;
+import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -26,13 +31,36 @@ public class LoginController {
     @FXML
     private Button loginSignUp;
 
+    private Connection connection;
+
     @FXML
     void initialize(){
+
+        connection = new Connection();
 
         String loginText = loginUsername.getText().trim();
         String passwordText = loginPassword.getText().trim();
 
+        User user  = new User();
+        user.setLogin(loginText);
+        user.setPassword(passwordText);
+
         loginButton.setOnAction(event -> {
+            MySqlConnector connector = new MySqlConnector();
+            try {
+               ResultSet userRow = connector.getUser(user);
+               int counter = 0;
+
+               while (userRow.next()){
+                   counter++;
+               }
+
+               if(counter == 1){
+                   System.out.println("login successful");
+               }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
 
         });
 
@@ -54,27 +82,5 @@ public class LoginController {
             stage.showAndWait();
 
         });
-
-        loginButton.setOnAction(event -> {
-            if (!loginText.equals("") || !loginPassword.equals("")){
-                loginUser(loginText, passwordText);
-        } else {
-                System.err.println("Login or password is missing");
-            }
-        });
-
-        loginButton.setOnAction(event -> {
-            loginUser(loginUsername.getText(), loginPassword.getText());
-        });
     }
-
-    private void loginUser(String userName, String userPassword) {
-        if (!userName.equals("") || !userPassword.equals("")){
-
-        } else {
-
-        }
-    }
-
-
 }

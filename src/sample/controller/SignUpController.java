@@ -29,10 +29,7 @@ public class SignUpController {
     @FXML
     void initialize(){
 
-        signUp.setOnAction(event -> {
-            createUser();
-
-        });
+        signUp.setOnAction(event -> createUser());
 
     }
 

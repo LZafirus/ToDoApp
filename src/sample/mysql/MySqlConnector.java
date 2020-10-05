@@ -2,10 +2,7 @@ package sample.mysql;
 
 import sample.model.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MySqlConnector {
 
@@ -50,27 +47,25 @@ public class MySqlConnector {
         }
     }
 
-
-
-
     public void disconnect() throws SQLException {
        Statement statement = connection.createStatement();
        statement.close();
     }
 
-    public boolean isUserLogged(User user) throws SQLException {
+    public ResultSet getUser(User user) throws SQLException {
+        ResultSet resultSet = null;
+
         if(!user.getLogin().equals("") || !user.getPassword().equals("")){
 
             String query = "SELECT * FROM " + ConstDataBase.usersTable +
                     " WHERE " + ConstDataBase.usersLogin + " =" + user.getLogin()
                     + " AND " + ConstDataBase.usersPassword + " =" + user.getPassword();
             Statement statement = connection.createStatement();
-            statement.executeQuery();
+            resultSet = statement.executeQuery(query);
         } else {
-
+            System.out.println("Enter correct credentials");
         }
 
-        return false;
+        return resultSet;
     }
-
 }
