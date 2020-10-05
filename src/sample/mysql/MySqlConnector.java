@@ -9,7 +9,6 @@ public class MySqlConnector {
 
 
     //TODO I am aware that this is not safe - only for testing if working reasons
-    //FIXME remember to create way to create user etc via login pane
 
     String url = "jdbc:mysql://localhost:3306/machinetodo";
     String user = "root";
@@ -48,12 +47,17 @@ public class MySqlConnector {
     public void loginInUser(User user) throws SQLException {
         ResultSet resultSet;
         Statement statement = connection.createStatement();
-        String query = "SELECT * FROM users WHERE login = '" + user.getLogin()
-                + "' AND password = '" + user.getPassword() + "';";
-        resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-            System.out.println(
-                    "id:" + resultSet.getString("user_id"));
+        if (!user.getLogin().equals("") && !user.getPassword().equals("")) {
+            String query = "SELECT * FROM " + ConstDataBase.usersTable
+                    + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
+                    + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                System.out.println(
+                        "id:" + resultSet.getString("user_id"));
+            }
+        } else {
+            System.out.println("Missing login or password.");
         }
     }
 

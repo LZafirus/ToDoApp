@@ -12,8 +12,6 @@ import sample.model.User;
 import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginController {
@@ -36,6 +34,7 @@ public class LoginController {
 
         loginButton.setOnAction(event -> {
 
+            // TODO: 2020-10-06 check if below Strings should be private or it is ok?
             String loginText = loginUsername.getText().trim();
             String passwordText = loginPassword.getText().trim();
 
