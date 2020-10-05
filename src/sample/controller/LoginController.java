@@ -32,18 +32,19 @@ public class LoginController {
     private Button loginSignUp;
 
     @FXML
-    void initialize(){
+    void initialize() {
 
         loginButton.setOnAction(event -> {
 
             String loginText = loginUsername.getText().trim();
             String passwordText = loginPassword.getText().trim();
 
-            User user  = new User();
+            User user = new User();
             user.setLogin(loginText);
             user.setPassword(passwordText);
 
             MySqlConnector connector = new MySqlConnector();
+
             try {
                 connector.connect();
             } catch (ClassNotFoundException e) {
@@ -51,6 +52,7 @@ public class LoginController {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+
             try {
                 connector.loginInUser(user);
             } catch (SQLException throwables) {

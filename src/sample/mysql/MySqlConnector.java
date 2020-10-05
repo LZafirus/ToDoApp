@@ -18,10 +18,10 @@ public class MySqlConnector {
 
     Connection connection;
 
-    public Connection connect() throws ClassNotFoundException, SQLException{
+    public Connection connect() throws ClassNotFoundException, SQLException {
 
-            connection = DriverManager.getConnection(url, user, password);
-            Class.forName("com.mysql.jdbc.Driver");
+        connection = DriverManager.getConnection(url, user, password);
+        Class.forName("com.mysql.jdbc.Driver");
 
         return connection;
     }
@@ -35,9 +35,9 @@ public class MySqlConnector {
                     "(" + ConstDataBase.usersName + ", " + ConstDataBase.usersSurname + ", " +
                     ConstDataBase.usersLogin + ", " + ConstDataBase.usersPassword +
                     ") VALUES ('" + user.getFirstName() + "', '"
-                                    + user.getLastName() + "', '"
-                                     + user.getLogin() + "', '"
-                                        + user.getPassword() + "');";
+                    + user.getLastName() + "', '"
+                    + user.getLogin() + "', '"
+                    + user.getPassword() + "');";
             statement.execute(insert);
 
         } catch (SQLException throwables) {
@@ -48,13 +48,13 @@ public class MySqlConnector {
     public void loginInUser(User user) throws SQLException {
         ResultSet resultSet;
         Statement statement = connection.createStatement();
-        String query = "SELECT * FROM users WHERE login = '" + user.getLogin() + "';";
+        String query = "SELECT * FROM users WHERE login = '" + user.getLogin()
+                + "' AND password = '" + user.getPassword() + "';";
         resultSet = statement.executeQuery(query);
-        while (resultSet.next()){
+        while (resultSet.next()) {
             System.out.println(
-                    "id:"+resultSet.getString("user_id"));
+                    "id:" + resultSet.getString("user_id"));
         }
-
     }
 
     public void disconnect() throws SQLException {

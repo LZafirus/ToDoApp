@@ -27,7 +27,7 @@ public class SignUpController {
     private Button signUp;
 
     @FXML
-    void initialize(){
+    void initialize() {
 
         signUp.setOnAction(event -> {
             createUser();
