@@ -19,13 +19,13 @@ public class MySqlConnector {
 
     public void connect() {
 
-            try {
-                connection = DriverManager.getConnection(url, user, password);
-                Statement statement = connection.createStatement();
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
 
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void signUpUser(User user) throws SQLException {
@@ -56,16 +56,18 @@ public class MySqlConnector {
         ResultSet resultSet = null;
 
         if(!user.getLogin().equals("") || !user.getPassword().equals("")){
+            Statement statement = connection.createStatement();
 
             String query = "SELECT * FROM " + ConstDataBase.usersTable +
-                    " WHERE " + ConstDataBase.usersLogin + " =" + user.getLogin()
-                    + " AND " + ConstDataBase.usersPassword + " =" + user.getPassword();
-            Statement statement = connection.createStatement();
+                    " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
+                    + "' AND " + ConstDataBase.usersPassword + " ='" + user.getPassword() + "';";
+
             resultSet = statement.executeQuery(query);
         } else {
             System.out.println("Enter correct credentials");
         }
 
+       // return resultSet;
         return resultSet;
     }
 }

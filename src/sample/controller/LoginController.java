@@ -31,22 +31,21 @@ public class LoginController {
     @FXML
     private Button loginSignUp;
 
-    private Connection connection;
+    private MySqlConnector connector;
 
     @FXML
     void initialize(){
 
-        connection = new Connection();
-
-        String loginText = loginUsername.getText().trim();
-        String passwordText = loginPassword.getText().trim();
-
-        User user  = new User();
-        user.setLogin(loginText);
-        user.setPassword(passwordText);
-
+        connector = new MySqlConnector();
+        
         loginButton.setOnAction(event -> {
-            MySqlConnector connector = new MySqlConnector();
+
+            String loginText = loginUsername.getText().trim();
+            String passwordText = loginPassword.getText().trim();
+
+            User user  = new User();
+            user.setLogin(loginText);
+            user.setPassword(passwordText);
             try {
                ResultSet userRow = connector.getUser(user);
                int counter = 0;
@@ -61,7 +60,6 @@ public class LoginController {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
         });
 
         loginSignUp.setOnAction(event -> {
