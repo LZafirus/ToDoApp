@@ -44,21 +44,22 @@ public class MySqlConnector {
         }
     }
 
-    public void loginInUser(User user) throws SQLException {
-        ResultSet resultSet;
+    public ResultSet loginInUser(User user) throws SQLException {
+        ResultSet resultSet = null;
         Statement statement = connection.createStatement();
         if (!user.getLogin().equals("") && !user.getPassword().equals("")) {
             String query = "SELECT * FROM " + ConstDataBase.usersTable
                     + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
                     + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                System.out.println(
-                        "id:" + resultSet.getString("user_id"));
-            }
+//            while (resultSet.next()) {
+//                System.out.println(
+//                        "id:" + resultSet.getString("user_id"));
+//            }
         } else {
             System.out.println("Missing login or password.");
         }
+        return resultSet;
     }
 
     public void disconnect() throws SQLException {

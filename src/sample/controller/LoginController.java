@@ -12,6 +12,7 @@ import sample.model.User;
 import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginController {
@@ -53,7 +54,11 @@ public class LoginController {
             }
 
             try {
-                connector.loginInUser(user);
+               ResultSet userRow = connector.loginInUser(user);
+               while ((userRow != null) && userRow.next()){
+                   System.out.println("id:" + userRow.getString("user_id"));
+               }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
