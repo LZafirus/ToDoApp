@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.animations.Shaker;
 import sample.model.User;
 import sample.mysql.MySqlConnector;
 
@@ -44,6 +45,7 @@ public class LoginController {
             user.setPassword(passwordText);
 
             MySqlConnector connector = new MySqlConnector();
+            int counter = 0;
 
             try {
                 connector.connect();
@@ -54,16 +56,23 @@ public class LoginController {
             }
 
             try {
-               ResultSet userRow = connector.loginInUser(user);
-               while ((userRow != null) && userRow.next()){
-                   System.out.println("id:" + userRow.getString("user_id"));
-               }
-
+                ResultSet userRow = connector.loginInUser(user);
+                while ((userRow != null) && userRow.next()) {
+                    counter++;
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
-
+            if (counter == 1) {
+                System.out.println("Successfully login");
+                showDetails();
+            } else {
+                Shaker shakerLogin = new Shaker(loginUsername);
+                Shaker shakerPassword = new Shaker(loginPassword);
+                shakerLogin.shake();
+                shakerPassword.shake();
+            }
         });
 
         loginSignUp.setOnAction(event -> {
@@ -80,8 +89,27 @@ public class LoginController {
 
             Parent root = loader.getRoot();
             Stage stage = new Stage();
+            stage.setTitle("Personal To-Do Machine");
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+    }
+
+    private void showDetails(){
+        loginSignUp.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/details.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setTitle("Personal To-Do Machine");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 }

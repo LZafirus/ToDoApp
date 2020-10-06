@@ -2,6 +2,8 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import sample.animations.Shaker;
 
 public class DetailsController {
 
@@ -21,11 +23,12 @@ public class DetailsController {
     @FXML
     void initialize(){
 
-    }
+        detailsAddTask.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Shaker labelShaker = new Shaker(detailsAddTask);
+            labelShaker.shake();
+            System.out.println("adding clicked");
+        });
 
-    void setName(String name) {
-        detailsWelcome.setText("Welcome " + name);
     }
-
 
 }
