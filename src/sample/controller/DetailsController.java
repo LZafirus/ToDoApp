@@ -42,6 +42,7 @@ public class DetailsController {
             detailsAddTask.setOpacity(0);
             detailsAddTask.setText("Adding..");
 
+
             fadeTransition.setFromValue(1f);
             fadeTransition.setToValue(0f);
             fadeTransition.setCycleCount(2);
