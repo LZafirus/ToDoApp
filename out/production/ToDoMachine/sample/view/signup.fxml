@@ -21,7 +21,7 @@
             <TextField fx:id="signUpSurname" layoutX="276.0" layoutY="61.0" prefHeight="31.0" prefWidth="184.0" promptText="Surname" />
             <TextField fx:id="signUpLogin" layoutX="276.0" layoutY="100.0" prefHeight="31.0" prefWidth="184.0" promptText="Login" />
             <PasswordField fx:id="signUpPassword" layoutX="276.0" layoutY="140.0" prefHeight="31.0" prefWidth="184.0" promptText="Password" />
-            <Button fx:id="signUp" layoutX="340.0" layoutY="271.0" mnemonicParsing="false" text="Button" /></children>
+            <Button fx:id="signUp" layoutX="340.0" layoutY="271.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="53.0" text="Sign in" /></children>
       </AnchorPane>
 
    </children>
