@@ -14,5 +14,6 @@ public class ConstDataBase {
     public static final String tasksTaskId = "task_id";
     public static final String tasksUserId = "user_id";
     public static final String tasksDesc = "task_desc";
+    public static final String tasksName = "task_name";
 
 }

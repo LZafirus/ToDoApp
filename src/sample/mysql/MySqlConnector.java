@@ -1,5 +1,6 @@
 package sample.mysql;
 
+import sample.model.Task;
 import sample.model.User;
 
 import javax.jws.soap.SOAPBinding;
@@ -60,6 +61,21 @@ public class MySqlConnector {
             System.out.println("Missing login or password.");
         }
         return resultSet;
+    }
+
+    public void insertTask(Task task) throws SQLException {
+        try {
+            Statement statement = connection.createStatement();
+
+            String insert = "INSERT INTO " + ConstDataBase.tasksTable +
+                    "(" + ConstDataBase.tasksName + ", " + ConstDataBase.tasksDesc +
+                    ") VALUES ('" + task.getTaskName() + "', '"
+                    + task.getTaskDesc() + "');";
+            statement.execute(insert);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void disconnect() throws SQLException {
