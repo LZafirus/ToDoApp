@@ -68,8 +68,13 @@ public class MySqlConnector {
             Statement statement = connection.createStatement();
 
             String insert = "INSERT INTO " + ConstDataBase.tasksTable +
-                    "(" + ConstDataBase.tasksName + ", " + ConstDataBase.tasksDesc +
-                    ") VALUES ('" + task.getTaskName() + "', '"
+                    "("
+                    + ConstDataBase.tasksUserId + ", "
+                    + ConstDataBase.tasksName + ", "
+                    + ConstDataBase.tasksDesc + ". " +
+                    ") VALUES ('"
+                    
+                    + task.getTaskName() + "', '"
                     + task.getTaskDesc() + "');";
             statement.execute(insert);
 
