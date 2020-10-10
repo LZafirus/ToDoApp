@@ -1,14 +1,15 @@
 package sample.animations;
 
 import javafx.animation.FadeTransition;
+import javafx.scene.Node;
 import javafx.util.Duration;
 
 public class Fade {
 
     private FadeTransition fadeTransition;
 
-    public Fade(FadeTransition fadeTransition) {
-        fadeTransition = new FadeTransition(Duration.millis(2000), fadeTransition.getNode());
+    public Fade(Node node) {
+        fadeTransition = new FadeTransition(Duration.millis(2000), node);
 
         fadeTransition.setFromValue(1f);
         fadeTransition.setToValue(0f);
@@ -16,6 +17,6 @@ public class Fade {
         fadeTransition.setAutoReverse(false);
     }
 
-    public void fade() {fadeTransition.play();}
+    public void fade() {fadeTransition.playFromStart();}
 
 }

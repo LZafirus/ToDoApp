@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import sample.animations.Fade;
 import sample.animations.Shaker;
 
 import java.io.IOException;
@@ -36,18 +37,13 @@ public class DetailsController {
             Shaker labelShaker = new Shaker(detailsAddTask);
             labelShaker.shake();
 
-            FadeTransition fadeTransition = new FadeTransition(Duration.millis(2000), detailsAddTask);
-
             detailsAddTask.relocate(0, 25);
             detailsAddTask.setOpacity(0);
             detailsAddTask.setText("Adding..");
 
+            Fade fadeTransition = new Fade(detailsAddTask);
+            fadeTransition.fade();
 
-            fadeTransition.setFromValue(1f);
-            fadeTransition.setToValue(0f);
-            fadeTransition.setCycleCount(2);
-            fadeTransition.setAutoReverse(false);
-            fadeTransition.play();
 
             try {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
