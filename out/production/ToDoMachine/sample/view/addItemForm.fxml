@@ -10,11 +10,11 @@
    <children>
       <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
          <children>
-            <TextField fx:id="addItemDescLabel" layoutX="215.0" layoutY="114.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
-            <TextField fx:id="addTaskLabel" layoutX="215.0" layoutY="50.0" prefHeight="25.0" prefWidth="271.0" promptText="Task.." />
+            <TextField fx:id="addTaskDesc" layoutX="215.0" layoutY="114.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
+            <TextField fx:id="addTaskName" layoutX="215.0" layoutY="50.0" prefHeight="25.0" prefWidth="271.0" promptText="Task.." />
          </children>
       </AnchorPane>
-      <Button fx:id="addSaveButton" layoutX="258.0" layoutY="273.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Save" textFill="WHITE" />
+      <Button fx:id="addTaskButton" layoutX="258.0" layoutY="273.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Save" textFill="WHITE" />
       <Label alignment="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Adding tasks" textFill="WHITE">
          <font>
             <Font name="Arial" size="18.0" />

@@ -14,21 +14,32 @@ public class AddItemFormController {
     private MySqlConnector mySqlConnector;
 
     @FXML
-    private TextField addItemDescLabel;
+    private TextField addTaskDesc;
 
     @FXML
-    private TextField addTaskLabel;
+    private TextField addTaskName;
 
     @FXML
-    private Button addSaveButton;
+    private Button addTaskButton;
 
     @FXML
     void initialize() {
 
         mySqlConnector = new MySqlConnector();
 
-        addSaveButton.setOnAction(event -> {
-            Task task = new Task();
+        try {
+            mySqlConnector.connect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        addTaskButton.setOnAction(event -> {
+            String taskName = addTaskName.getText();
+            String taskDesc = addTaskDesc.getText();
+
+            Task task = new Task(taskName, taskDesc);
             try {
                 mySqlConnector.insertTask(task);
             } catch (SQLException throwables) {
@@ -37,8 +48,6 @@ public class AddItemFormController {
 
 
         });
-
-
     }
 
 }
