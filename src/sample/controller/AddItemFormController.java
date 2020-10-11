@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import sample.model.Task;
+import sample.model.User;
 import sample.mysql.MySqlConnector;
 
 import java.sql.SQLException;
@@ -25,6 +26,12 @@ public class AddItemFormController {
     @FXML
     void initialize() {
 
+        addTaskButton.setOnAction(event -> {
+            addTask();
+        });
+    }
+
+    public void addTask() {
         mySqlConnector = new MySqlConnector();
 
         try {
@@ -35,19 +42,16 @@ public class AddItemFormController {
             throwables.printStackTrace();
         }
 
-        addTaskButton.setOnAction(event -> {
-            String taskName = addTaskName.getText();
-            String taskDesc = addTaskDesc.getText();
+        String taskName = addTaskName.getText();
+        String taskDesc = addTaskDesc.getText();
 
-            Task task = new Task(taskName, taskDesc);
-            try {
-                mySqlConnector.insertTask(task);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+        Task task = new Task(taskName, taskDesc);
 
-
-        });
+        try {
+            mySqlConnector.insertTask(task);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }

@@ -53,10 +53,6 @@ public class MySqlConnector {
                     + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
                     + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
             resultSet = statement.executeQuery(query);
-//            while (resultSet.next()) {
-//                System.out.println(
-//                        "id:" + resultSet.getString("user_id"));
-//            }
         } else {
             System.out.println("Missing login or password.");
         }
@@ -83,6 +79,22 @@ public class MySqlConnector {
             throwables.printStackTrace();
         }
     }
+
+
+    public ResultSet loginIdCheck(User user) throws SQLException {
+        ResultSet resultSet = null;
+        Statement statement = connection.createStatement();
+
+            String query = "SELECT " + ConstDataBase.tasksUserId + " FROM "
+                    + ConstDataBase.tasksTable
+                    + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
+                    + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
+            resultSet = statement.executeQuery(query);
+
+        return resultSet;
+    }
+
+
 
     public void disconnect() throws SQLException {
         Statement statement = connection.createStatement();

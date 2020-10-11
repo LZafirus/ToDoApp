@@ -35,8 +35,8 @@ public class SignUpController {
     }
 
     private void createUser() {
-
         MySqlConnector connector = new MySqlConnector();
+
         try {
             connector.connect();
         } catch (ClassNotFoundException e) {
