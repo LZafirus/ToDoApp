@@ -3,7 +3,6 @@ package sample.mysql;
 import sample.model.Task;
 import sample.model.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.*;
 
 public class MySqlConnector {

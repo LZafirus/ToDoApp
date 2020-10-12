@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class AddItemController {
 
+    private int userId;
 
     @FXML
     private Label detailsWelcome;
@@ -45,6 +46,10 @@ public class AddItemController {
 
             try {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
+                
+                AddItemFormController addItemController = new AddItemFormController();
+                addItemController.setUserId(getUserId());
+
                 rootAnchorPane.getChildren().setAll(formPane);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -52,6 +57,15 @@ public class AddItemController {
 
         });
 
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+        System.out.println("user id is " + this.userId);
+    }
+
+    public int getUserId() {
+        return this.userId;
     }
 
 }

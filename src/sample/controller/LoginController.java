@@ -68,7 +68,7 @@ public class LoginController {
 
             if (counter == 1) {
                 System.out.println("Successfully login");
-                showDetails();
+                showAddItemScreen();
             } else {
                 Shaker shakerLogin = new Shaker(loginUsername);
                 Shaker shakerPassword = new Shaker(loginPassword);
@@ -97,7 +97,7 @@ public class LoginController {
         });
     }
 
-    private void showDetails(){
+    private void showAddItemScreen(){
         loginSignUp.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/details.fxml"));
@@ -113,8 +113,9 @@ public class LoginController {
         stage.setTitle("Personal To-Do Machine");
         stage.setScene(new Scene(root));
 
-        AddItemFormController addItemFormController = new AddItemFormController();
-        addItemFormController.setUserId(userId);
+        //TODO check more about loader.getController()
+        AddItemController addItemController = loader.getController();
+        addItemController.setUserId(userId);
 
         stage.showAndWait();
     }

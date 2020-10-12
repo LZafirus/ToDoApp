@@ -4,11 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import sample.model.Task;
-import sample.model.User;
 import sample.mysql.MySqlConnector;
-
 import java.sql.SQLException;
-import java.util.Calendar;
 
 public class AddItemFormController {
 
@@ -56,12 +53,12 @@ public class AddItemFormController {
         }
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-        System.out.println("user id is " + this.userId);
+    public int getUserId() {
+        return userId;
     }
 
-    public int getUserId(){
-        return this.userId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
+
 }
