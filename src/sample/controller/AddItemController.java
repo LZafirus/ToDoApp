@@ -10,7 +10,7 @@ import sample.animations.Shaker;
 
 import java.io.IOException;
 
-public class DetailsController {
+public class AddItemController {
 
 
     @FXML
