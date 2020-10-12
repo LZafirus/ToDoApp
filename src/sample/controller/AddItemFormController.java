@@ -12,6 +12,8 @@ import java.util.Calendar;
 
 public class AddItemFormController {
 
+    private int userId;
+
     private MySqlConnector mySqlConnector;
 
     @FXML
@@ -54,4 +56,12 @@ public class AddItemFormController {
         }
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+        System.out.println("user id is " + this.userId);
+    }
+
+    public int getUserId(){
+        return this.userId;
+    }
 }

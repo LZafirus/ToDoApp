@@ -1,12 +1,10 @@
 package sample.controller;
 
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import sample.animations.Fade;
 import sample.animations.Shaker;
 

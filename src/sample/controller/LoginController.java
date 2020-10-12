@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 public class LoginController {
 
+    private int userId;
 
     @FXML
     private TextField loginUsername;
@@ -59,6 +60,7 @@ public class LoginController {
                 ResultSet userRow = connector.loginInUser(user);
                 while ((userRow != null) && userRow.next()) {
                     counter++;
+                    userId = userRow.getInt("user_id");
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -110,6 +112,10 @@ public class LoginController {
         Stage stage = new Stage();
         stage.setTitle("Personal To-Do Machine");
         stage.setScene(new Scene(root));
+
+        AddItemFormController addItemFormController = new AddItemFormController();
+        addItemFormController.setUserId(userId);
+
         stage.showAndWait();
     }
 }
