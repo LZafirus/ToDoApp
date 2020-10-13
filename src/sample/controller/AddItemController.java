@@ -46,7 +46,7 @@ public class AddItemController {
 
             try {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
-                
+
                 AddItemFormController addItemController = new AddItemFormController();
                 addItemController.setUserId(getUserId());
 
