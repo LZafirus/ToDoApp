@@ -84,15 +84,28 @@ public class MySqlConnector {
         ResultSet resultSet = null;
         Statement statement = connection.createStatement();
 
-            String query = "SELECT " + ConstDataBase.tasksUserId + " FROM "
-                    + ConstDataBase.tasksTable
-                    + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
-                    + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
-            resultSet = statement.executeQuery(query);
+        String query = "SELECT " + ConstDataBase.tasksUserId + " FROM "
+                + ConstDataBase.tasksTable
+                + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
+                + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
+        resultSet = statement.executeQuery(query);
 
         return resultSet;
     }
 
+    public int getAllTasks(int userId) throws SQLException {
+        Statement statement = connection.createStatement();
+        String query = "SELECT COUNT(*) FROM " + ConstDataBase.tasksTable +
+                " WHERE " + ConstDataBase.tasksUserId +
+                "=" + userId + ";";
+        ResultSet resultSet = statement.executeQuery(query);
+        //TODO more research about double resultset
+        while (resultSet.next()){
+            return resultSet.getInt(1);
+        }
+
+        return resultSet.getInt(1);
+    }
 
 
     public void disconnect() throws SQLException {
