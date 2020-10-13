@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class AddItemFormController {
 
-    private int userId;
+    public static int userId;
 
     private MySqlConnector mySqlConnector;
 
@@ -33,6 +33,10 @@ public class AddItemFormController {
     public void addTask() {
         mySqlConnector = new MySqlConnector();
 
+        String taskName = addTaskName.getText().trim();
+        String taskDesc = addTaskDesc.getText().trim();
+        Task task = new Task(taskName, taskDesc);
+
         try {
             mySqlConnector.connect();
         } catch (ClassNotFoundException e) {
@@ -41,16 +45,16 @@ public class AddItemFormController {
             throwables.printStackTrace();
         }
 
-        String taskName = addTaskName.getText();
-        String taskDesc = addTaskDesc.getText();
-
-        Task task = new Task(taskName, taskDesc);
+        task.setTaskName(taskName);
+        task.setTaskDesc(taskDesc);
+        task.setUserId(getUserId());
 
         try {
             mySqlConnector.insertTask(task);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
     }
 
     public int getUserId() {

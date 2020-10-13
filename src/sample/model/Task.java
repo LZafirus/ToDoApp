@@ -6,6 +6,7 @@ public class Task {
 
     private String taskName;
     private String taskDesc;
+    private int userId;
 
     public Task() {
     }
@@ -15,9 +16,13 @@ public class Task {
         this.taskDesc = taskDesc;
     }
 
-    public String getTaskName() { return taskName; }
+    public String getTaskName() {
+        return taskName;
+    }
 
-    public void setTaskName(String taskName) { this.taskName = taskName; }
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
     public String getTaskDesc() {
         return taskDesc;
@@ -25,6 +30,14 @@ public class Task {
 
     public void setTaskDesc(String taskDesc) {
         this.taskDesc = taskDesc;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }

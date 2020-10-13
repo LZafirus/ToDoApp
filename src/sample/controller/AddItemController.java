@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class AddItemController {
 
-    private int userId;
+    public static int userId;
 
     @FXML
     private Label detailsWelcome;
@@ -47,8 +47,7 @@ public class AddItemController {
             try {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
 
-                AddItemFormController addItemController = new AddItemFormController();
-                addItemController.setUserId(getUserId());
+                AddItemFormController.userId = getUserId();
 
                 rootAnchorPane.getChildren().setAll(formPane);
             } catch (IOException e) {

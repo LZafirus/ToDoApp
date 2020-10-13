@@ -69,7 +69,7 @@ public class MySqlConnector {
                     + ConstDataBase.tasksDesc +
                     ") VALUES ("
                     //@todo connection user - task via ID
-                    + 1 + ", '"
+                    + task.getUserId() + ", '"
                     + task.getTaskName() + "', '"
                     + task.getTaskDesc() + "');";
             statement.execute(insert);
