@@ -2,6 +2,7 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,13 +19,7 @@ public class AddItemController {
     private Label detailsWelcome;
 
     @FXML
-    private Label detailsAddTask;
-
-    @FXML
-    private Label detailsLabelTwo;
-
-    @FXML
-    private Label detailsLabelThree;
+    private Button detailsAddTask;
 
     @FXML
     private AnchorPane rootAnchorPane;

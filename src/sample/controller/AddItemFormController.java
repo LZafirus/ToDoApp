@@ -34,19 +34,21 @@ public class AddItemFormController {
     void initialize() {
 
         addTaskButton.setOnAction(event -> {
-            addTask();
+            try {
+                addTask();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         });
     }
 
-    public void addTask() {
+    public void addTask() throws SQLException {
         mySqlConnector = new MySqlConnector();
 
         String taskName = addTaskName.getText().trim();
         String taskDesc = addTaskDesc.getText().trim();
         Task task = new Task(taskName, taskDesc);
 
-        int taskNumber = 0;
-        taskNumber++;
 
         try {
             mySqlConnector.connect();
@@ -68,7 +70,9 @@ public class AddItemFormController {
 
         addingLabelSucess.setVisible(true);
         todosButton.setVisible(true);
-        todosButton.setText("Back to list. Added: " + taskNumber);
+
+        int taskNumber = mySqlConnector.getAllTasks(AddItemController.userId);
+        todosButton.setText("Back to list. Total: " + taskNumber);
 
         addTaskName.setText("");
         addTaskDesc.setText("");

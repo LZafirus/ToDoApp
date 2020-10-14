@@ -15,7 +15,7 @@ import java.sql.SQLOutput;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws IOException, SQLException {
+    public void start(Stage primaryStage) throws IOException, SQLException, ClassNotFoundException {
 
         //MySqlConnector connector = new MySqlConnector();
         //connector.connect();
@@ -25,8 +25,6 @@ public class Main extends Application {
         primaryStage.setTitle("Personal To-Do Machine");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
-
-
 
 
     }
