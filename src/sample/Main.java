@@ -20,7 +20,7 @@ public class Main extends Application {
         //MySqlConnector connector = new MySqlConnector();
         //connector.connect();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/list.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("/sample/view/details.fxml"));
         primaryStage.setTitle("Personal To-Do Machine");
         primaryStage.setScene(new Scene(root, 700, 400));
