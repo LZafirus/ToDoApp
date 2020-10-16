@@ -53,7 +53,7 @@ public class ListController {
 
         Pane pane = new Pane();
 
-        Image icon = new Image("/sample/assets/coalaLogo.png");
+        Image icon = new Image("/sample/assets/task_add.png");
         ImageView imageView = new ImageView(icon);
 
         public JFXCell() {
