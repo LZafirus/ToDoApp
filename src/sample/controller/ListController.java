@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import sample.model.Task;
 
 public class ListController {
 
@@ -20,12 +21,7 @@ public class ListController {
     private Label listLabel;
 
     @FXML
-    private ListView<String> listListView;
-    ObservableList<String> listView = FXCollections.observableArrayList(
-            "dawid",
-            "test",
-            "test1"
-    );
+    private ListView<Task> listTasks;
 
     @FXML
     private TextField listTaskName;
@@ -36,45 +32,23 @@ public class ListController {
     @FXML
     private Button listSaveButton;
 
+    private ObservableList<Task> tasks;
+
     @FXML
     void initialize() {
 
-        listListView.setItems(listView);
+        Task myTask = new Task();
+        myTask.setTaskName("Car");
+        myTask.setTaskDesc("Cleaning");
 
-        listListView.setCellFactory(param -> new JFXCell());
+        tasks = FXCollections.observableArrayList();
 
-    }
+        tasks.add(myTask);
 
-    static class JFXCell extends JFXListCell<String> {
-
-        HBox hBox = new HBox();
-        Button helloButton = new Button("hei");
-        Label task = new Label();
-
-        Pane pane = new Pane();
-
-        Image icon = new Image("/sample/assets/task_add.png");
-        ImageView imageView = new ImageView(icon);
-
-        public JFXCell() {
-            super();
-
-            hBox.getChildren().addAll(imageView, task, helloButton);
-            hBox.setHgrow(pane, Priority.ALWAYS);
-        }
-
-        public void updateItem(String taskName, boolean empty) {
-            super.updateItem(taskName, empty);
-            setText(null);
-            setGraphic(null);
-
-            if (taskName != null && !empty) {
-                task.setText(taskName);
-                setGraphic(hBox);
-            }
-        }
-
+        listTasks.setItems(tasks);
+        listTasks.setCellFactory(CellController -> new CellController());
 
     }
+
 
 }
