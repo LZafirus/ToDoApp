@@ -22,13 +22,10 @@ public class CellController extends JFXListCell<Task> {
     private Label cellDescLabel;
 
     @FXML
-    private ImageView cellDoneImgae;
-
-    @FXML
     private ImageView cellRemoveImage;
 
     @FXML
-    private Label cellDateLabel;
+    private ImageView cellDoneImgae;
 
     private FXMLLoader fxmlLoader;
 
@@ -38,10 +35,10 @@ public class CellController extends JFXListCell<Task> {
     }
 
     @Override
-    public void updateItem(Task myTask, boolean empty) {
-        super.updateItem(myTask, empty);
+    protected void updateItem(Task item, boolean empty) {
+        super.updateItem(item, empty);
 
-        if (empty || myTask == null) {
+        if (empty || item == null) {
             setText(null);
             setGraphic(null);
         } else {
@@ -55,13 +52,11 @@ public class CellController extends JFXListCell<Task> {
                     e.printStackTrace();
                 }
             }
-
-            cellNameLabel.setText(myTask.getTaskName());
-            cellDescLabel.setText(myTask.getTaskDesc());
+            cellNameLabel.setText(item.getTaskName());
+            cellDescLabel.setText(item.getTaskDesc());
 
             setText(null);
             setGraphic(cellRootPane);
         }
     }
-
 }

@@ -100,7 +100,7 @@ public class MySqlConnector {
                 "=" + userId + ";";
         ResultSet resultSet = statement.executeQuery(query);
         //TODO more research about double resultset
-        while (resultSet.next()){
+        while (resultSet.next()) {
             return resultSet.getInt(1);
         }
 

@@ -1,6 +1,5 @@
 package sample.controller;
 
-import com.jfoenix.controls.JFXListCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,12 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import sample.model.Task;
+
+import java.sql.SQLException;
 
 public class ListController {
 
@@ -21,7 +17,7 @@ public class ListController {
     private Label listLabel;
 
     @FXML
-    private ListView<Task> listTasks;
+    private ListView<Task> listListView;
 
     @FXML
     private TextField listTaskName;
@@ -35,20 +31,21 @@ public class ListController {
     private ObservableList<Task> tasks;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
 
-        Task myTask = new Task();
-        myTask.setTaskName("Car");
-        myTask.setTaskDesc("Cleaning");
+        Task mytask = new Task();
+        mytask.setTaskName("Car");
+        mytask.setTaskDesc("Cleaning");
 
         tasks = FXCollections.observableArrayList();
 
-        tasks.add(myTask);
+        tasks.add(mytask);
 
-        listTasks.setItems(tasks);
-        listTasks.setCellFactory(CellController -> new CellController());
+        listListView.setItems(tasks);
+        listListView.setCellFactory(CellController -> new CellController());
+
+
 
     }
-
-
 }
+
