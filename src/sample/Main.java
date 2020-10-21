@@ -17,7 +17,6 @@ public class Main extends Application {
         primaryStage.setTitle("Personal To-Do Machine");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
