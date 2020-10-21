@@ -107,6 +107,12 @@ public class MySqlConnector {
         return resultSet.getInt(1);
     }
 
+    public ResultSet getTasksByUser(int userId){
+        ResultSet resultTasks = null;
+
+        return resultTasks;
+    }
+
 
     public void disconnect() throws SQLException {
         Statement statement = connection.createStatement();

@@ -1,12 +1,17 @@
 package sample.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.model.Task;
 import sample.mysql.MySqlConnector;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class AddItemFormController {
@@ -78,6 +83,17 @@ public class AddItemFormController {
         addTaskDesc.setText("");
 
         todosButton.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/list.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
 
         });
 
