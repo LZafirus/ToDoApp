@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import sample.model.Task;
+import sample.mysql.MySqlConnector;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ListController {
@@ -30,22 +32,26 @@ public class ListController {
 
     private ObservableList<Task> tasks;
 
+    private MySqlConnector mySqlConnector;
+
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
 
-        Task mytask = new Task();
-        mytask.setTaskName("Car");
-        mytask.setTaskDesc("Cleaning");
-
+        mySqlConnector = new MySqlConnector();
         tasks = FXCollections.observableArrayList();
+        mySqlConnector.connect();
+        ResultSet resultSet = mySqlConnector.getTasksByUser(AddItemController.userId);
 
-        tasks.add(mytask);
+        while (resultSet.next()) {
+            Task task = new Task();
+            task.setTaskName(resultSet.getString("task_name"));
+            task.setTaskDesc(resultSet.getString("task_desc"));
+
+            tasks.addAll(task);
+        }
 
         listListView.setItems(tasks);
         listListView.setCellFactory(CellController -> new CellController());
-
-
-
     }
 }
 

@@ -58,6 +58,19 @@ public class MySqlConnector {
         return resultSet;
     }
 
+    public ResultSet loginIdCheck(User user) throws SQLException {
+        ResultSet resultSet = null;
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT " + ConstDataBase.tasksUserId + " FROM "
+                + ConstDataBase.tasksTable
+                + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
+                + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
+        resultSet = statement.executeQuery(query);
+
+        return resultSet;
+    }
+
     public void insertTask(Task task) throws SQLException {
         try {
             Statement statement = connection.createStatement();
@@ -77,20 +90,6 @@ public class MySqlConnector {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-
-    public ResultSet loginIdCheck(User user) throws SQLException {
-        ResultSet resultSet = null;
-        Statement statement = connection.createStatement();
-
-        String query = "SELECT " + ConstDataBase.tasksUserId + " FROM "
-                + ConstDataBase.tasksTable
-                + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
-                + "' AND " + ConstDataBase.usersPassword + " = '" + user.getPassword() + "';";
-        resultSet = statement.executeQuery(query);
-
-        return resultSet;
     }
 
     public int getAllTasks(int userId) throws SQLException {
@@ -116,6 +115,13 @@ public class MySqlConnector {
         resultTasks = statement.executeQuery(query);
 
         return resultTasks;
+    }
+
+    public void removeTask(int userId){
+
+        String query = "DELETE FROM " + ConstDataBase.tasksTable +
+                " WHERE " +
+
     }
 
 

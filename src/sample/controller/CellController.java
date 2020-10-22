@@ -55,6 +55,10 @@ public class CellController extends JFXListCell<Task> {
             cellNameLabel.setText(item.getTaskName());
             cellDescLabel.setText(item.getTaskDesc());
 
+            cellRemoveImage.setOnMouseClicked(event -> {
+                getListView().getItems().remove(getItem());
+            });
+
             setText(null);
             setGraphic(cellRootPane);
         }
