@@ -107,8 +107,13 @@ public class MySqlConnector {
         return resultSet.getInt(1);
     }
 
-    public ResultSet getTasksByUser(int userId){
+    public ResultSet getTasksByUser(int userId) throws SQLException {
         ResultSet resultTasks = null;
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM " + ConstDataBase.tasksTable
+                + " WHERE " + ConstDataBase.usersId + " = " + userId + ";";
+        resultTasks = statement.executeQuery(query);
 
         return resultTasks;
     }
