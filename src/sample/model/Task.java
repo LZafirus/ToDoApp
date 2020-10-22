@@ -7,6 +7,15 @@ public class Task {
     private String taskName;
     private String taskDesc;
     private int userId;
+    private int taskId;
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
 
     public Task() {
     }

@@ -7,8 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import sample.model.Task;
+import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class CellController extends JFXListCell<Task> {
 
@@ -28,6 +30,8 @@ public class CellController extends JFXListCell<Task> {
     private ImageView cellDoneImgae;
 
     private FXMLLoader fxmlLoader;
+
+    private MySqlConnector mySqlConnector;
 
     @FXML
     void initialize() {
@@ -55,7 +59,18 @@ public class CellController extends JFXListCell<Task> {
             cellNameLabel.setText(item.getTaskName());
             cellDescLabel.setText(item.getTaskDesc());
 
+            int taskId = item.getTaskId();
+
             cellRemoveImage.setOnMouseClicked(event -> {
+                mySqlConnector = new MySqlConnector();
+                try {
+                    mySqlConnector.connect();
+                    mySqlConnector.removeTask(AddItemController.userId, taskId);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
                 getListView().getItems().remove(getItem());
             });
 

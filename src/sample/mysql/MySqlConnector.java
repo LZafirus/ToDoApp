@@ -117,10 +117,15 @@ public class MySqlConnector {
         return resultTasks;
     }
 
-    public void removeTask(int userId){
+    public void removeTask(int userId, int taskId) throws SQLException {
+
+        Statement statement = connection.createStatement();
 
         String query = "DELETE FROM " + ConstDataBase.tasksTable +
-                " WHERE " +
+                " WHERE " + ConstDataBase.usersId + " = " + userId +
+                " AND " + ConstDataBase.tasksTaskId + " = " +  + taskId +
+                ";";
+        statement.execute(query);
 
     }
 

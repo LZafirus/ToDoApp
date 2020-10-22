@@ -44,6 +44,7 @@ public class ListController {
 
         while (resultSet.next()) {
             Task task = new Task();
+            task.setTaskId(resultSet.getInt("task_id"));
             task.setTaskName(resultSet.getString("task_name"));
             task.setTaskDesc(resultSet.getString("task_desc"));
 
