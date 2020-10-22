@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -13,11 +15,17 @@
       <AnchorPane prefHeight="16.0" prefWidth="700.0" style="-fx-background-color: #321911;" />
       <AnchorPane layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;">
          <children>
-            <Label fx:id="listLabel" alignment="CENTER" layoutX="156.0" layoutY="12.0" prefHeight="17.0" prefWidth="389.0" text="personal To-Do MAchine" textFill="WHITE">
+            <Label fx:id="listLabel" alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="17.0" prefWidth="389.0" text="Personal To-Do MAchine" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
+            <ImageView fitHeight="31.0" fitWidth="46.0" layoutX="662.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/task_done.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="614.0" layoutY="6.0" text="Refresh" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
@@ -28,8 +36,8 @@
                </effect></ListView>
             <TextField fx:id="listTaskName" layoutX="14.0" layoutY="64.0" prefHeight="25.0" prefWidth="271.0" promptText="Task.." />
             <TextField fx:id="listTaskDesc" layoutX="14.0" layoutY="100.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
+            <Button fx:id="listSaveButton" layoutX="58.0" layoutY="153.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Save" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <Button fx:id="listSaveButton" layoutX="268.0" layoutY="326.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Save" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import sample.model.Task;
 import sample.mysql.MySqlConnector;
 
@@ -17,6 +18,9 @@ public class ListController {
 
     @FXML
     private Label listLabel;
+
+    @FXML
+    private ImageView listRefreshButton;
 
     @FXML
     private ListView<Task> listListView;
@@ -31,6 +35,7 @@ public class ListController {
     private Button listSaveButton;
 
     private ObservableList<Task> tasks;
+    private ObservableList<Task> refreshedTasks;
 
     private MySqlConnector mySqlConnector;
 
@@ -63,6 +68,36 @@ public class ListController {
                 e.printStackTrace();
             }
         });
+
+        listRefreshButton.setOnMouseClicked(event -> {
+            try {
+                refreshTasks();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void refreshTasks() throws SQLException, ClassNotFoundException {
+        refreshedTasks = FXCollections.observableArrayList();
+        mySqlConnector.connect();
+
+        ResultSet resultSet = mySqlConnector.getTasksByUser(AddItemController.userId);
+
+        while (resultSet.next()) {
+            Task task = new Task();
+            task.setTaskId(resultSet.getInt("task_id"));
+            task.setTaskName(resultSet.getString("task_name"));
+            task.setTaskDesc(resultSet.getString("task_desc"));
+
+            refreshedTasks.addAll(task);
+        }
+
+        listListView.setItems(refreshedTasks);
+        listListView.setCellFactory(CellController -> new CellController());
+
     }
 
     public void addNewTask() throws SQLException, ClassNotFoundException {
@@ -81,5 +116,7 @@ public class ListController {
 
         listTaskName.setText("");
         listTaskDesc.setText("");
+
+        initialize();
     }
 }
