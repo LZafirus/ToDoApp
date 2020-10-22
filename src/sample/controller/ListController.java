@@ -53,6 +53,33 @@ public class ListController {
 
         listListView.setItems(tasks);
         listListView.setCellFactory(CellController -> new CellController());
+
+        listSaveButton.setOnAction(event -> {
+            try {
+                addNewTask();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void addNewTask() throws SQLException, ClassNotFoundException {
+        String taskName = listTaskName.getText().trim();
+        String taskDesc = listTaskDesc.getText().trim();
+
+        Task task = new Task();
+
+        mySqlConnector.connect();
+
+        task.setTaskName(taskName);
+        task.setTaskDesc(taskDesc);
+        task.setUserId(AddItemController.userId);
+
+        mySqlConnector.insertTask(task);
+
+        listTaskName.setText("");
+        listTaskDesc.setText("");
     }
 }
-
