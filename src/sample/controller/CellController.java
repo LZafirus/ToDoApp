@@ -61,6 +61,15 @@ public class CellController extends JFXListCell<Task> {
 
             int taskId = item.getTaskId();
 
+
+            cellDoneImgae.setOnMouseClicked(event -> {
+                mySqlConnector = new MySqlConnector();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sample/view/update.fxml"));
+            });
+
+
             cellRemoveImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();
                 try {

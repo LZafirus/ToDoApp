@@ -16,9 +16,6 @@ import java.sql.SQLException;
 
 public class AddItemFormController {
 
-    public static int userId;
-
-    private MySqlConnector mySqlConnector;
 
     @FXML
     private TextField addTaskDesc;
@@ -34,6 +31,10 @@ public class AddItemFormController {
 
     @FXML
     private Button todosButton;
+
+    public static int userId;
+
+    private MySqlConnector mySqlConnector;
 
     @FXML
     void initialize() {

@@ -20,12 +20,12 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="31.0" fitWidth="46.0" layoutX="662.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="614.0" layoutY="6.0" text="Refresh" textFill="WHITE" />
+            <ImageView fx:id="listRefreshButton" fitHeight="31.0" fitWidth="46.0" layoutX="662.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/task_done.png" />
                </image>
             </ImageView>
-            <Label layoutX="614.0" layoutY="6.0" text="Refresh" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">

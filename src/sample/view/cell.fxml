@@ -20,12 +20,12 @@
       </Label>
       <AnchorPane layoutY="97.0" prefHeight="27.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <children>
-            <ImageView fx:id="cellDoneImgae" fitHeight="39.0" fitWidth="39.0" layoutX="156.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cellDoneImgae" fitHeight="39.0" fitWidth="39.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/task_done.png" />
+                  <Image url="@../assets/task_edit.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="cellRemoveImage" fitHeight="39.0" fitWidth="41.0" layoutX="210.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cellRemoveImage" fitHeight="39.0" fitWidth="41.0" layoutX="39.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/task_remove.png" />
                </image>

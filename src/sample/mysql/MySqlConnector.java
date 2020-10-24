@@ -92,6 +92,17 @@ public class MySqlConnector {
         }
     }
 
+    public void updateTask(String name, String desc, int id) throws SQLException {
+        Statement statement = connection.createStatement();
+
+        String query = "UPDATE " + ConstDataBase.tasksTable + " SET " +
+                ConstDataBase.tasksName + "=" + name + ", " +
+                ConstDataBase.tasksDesc + "=" + desc + " WHERE " +
+                ConstDataBase.tasksTaskId + "=" + id +";";
+        statement.execute(query);
+
+    }
+
     public int getAllTasks(int userId) throws SQLException {
         Statement statement = connection.createStatement();
         String query = "SELECT COUNT(*) FROM " + ConstDataBase.tasksTable +
@@ -128,7 +139,6 @@ public class MySqlConnector {
         statement.execute(query);
 
     }
-
 
     public void disconnect() throws SQLException {
         Statement statement = connection.createStatement();
