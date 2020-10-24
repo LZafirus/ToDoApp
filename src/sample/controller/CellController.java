@@ -3,9 +3,12 @@ package sample.controller;
 import com.jfoenix.controls.JFXListCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import sample.model.Task;
 import sample.mysql.MySqlConnector;
 
@@ -67,6 +70,26 @@ public class CellController extends JFXListCell<Task> {
 
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/sample/view/update.fxml"));
+
+                try {
+                    mySqlConnector.connect();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+
+                UpdateController updateController = loader.getController();
+                updateController.setTaskName(item.getTaskName());
+                updateController.setUpdateTaskDesc(item.getTaskDesc());
+
+
+
+
             });
 
 
