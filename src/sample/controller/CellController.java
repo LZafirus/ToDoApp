@@ -73,9 +73,10 @@ public class CellController extends JFXListCell<Task> {
 
                 try {
                     mySqlConnector.connect();
+                    loader.load();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
-                } catch (SQLException throwables) {
+                } catch (SQLException | IOException throwables) {
                     throwables.printStackTrace();
                 }
 
@@ -87,9 +88,14 @@ public class CellController extends JFXListCell<Task> {
                 updateController.setTaskName(item.getTaskName());
                 updateController.setUpdateTaskDesc(item.getTaskDesc());
 
-
-
-
+                updateController.updateSaveButton.setOnAction(event1 -> {
+                    try {
+                        mySqlConnector.updateTask(updateController.getTaskName(), updateController.getTaskDesc(), item.getTaskId());
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                });
+                stage.show();
             });
 
 

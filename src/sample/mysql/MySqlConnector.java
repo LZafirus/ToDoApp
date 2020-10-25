@@ -96,8 +96,8 @@ public class MySqlConnector {
         Statement statement = connection.createStatement();
 
         String query = "UPDATE " + ConstDataBase.tasksTable + " SET " +
-                ConstDataBase.tasksName + "=" + name + ", " +
-                ConstDataBase.tasksDesc + "=" + desc + " WHERE " +
+                ConstDataBase.tasksName + "='" + name + "', " +
+                ConstDataBase.tasksDesc + "='" + desc + "' WHERE " +
                 ConstDataBase.tasksTaskId + "=" + id +";";
         statement.execute(query);
 

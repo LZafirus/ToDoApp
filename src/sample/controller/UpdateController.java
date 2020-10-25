@@ -14,7 +14,7 @@ public class UpdateController {
     private TextField updateTaskDesc;
 
     @FXML
-    private Button updateSaveButton;
+    public Button updateSaveButton;
 
     @FXML
     private Label updateLabel;
