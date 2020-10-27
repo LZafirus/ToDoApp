@@ -7,12 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws IOException, SQLException, ClassNotFoundException {
+    public void start(Stage primaryStage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/sample/view/login.fxml"));
         primaryStage.setTitle("Personal To-Do Machine");

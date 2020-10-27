@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 public class AddItemFormController {
 
-
     @FXML
     private TextField addTaskDesc;
 
@@ -55,7 +54,6 @@ public class AddItemFormController {
         String taskDesc = addTaskDesc.getText().trim();
         Task task = new Task(taskName, taskDesc);
 
-
         try {
             mySqlConnector.connect();
         } catch (ClassNotFoundException e) {
@@ -86,6 +84,7 @@ public class AddItemFormController {
         todosButton.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/list.fxml"));
+
             try {
                 loader.load();
             } catch (IOException e) {

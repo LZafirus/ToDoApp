@@ -22,7 +22,6 @@ public class UpdateController {
     @FXML
     void initialize() {
 
-
     }
 
     public void setTaskName(String taskName) {

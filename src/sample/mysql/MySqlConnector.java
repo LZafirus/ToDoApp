@@ -7,13 +7,12 @@ import java.sql.*;
 
 public class MySqlConnector {
 
-
     //TODO I am aware that this is not safe - only for testing if working reasons
 
-    String url = "jdbc:mysql://localhost:3306/machinetodo";
-    String user = "root";
-    String password = "";
-    String dataBase = "machinetodo";
+    private String url = "jdbc:mysql://localhost:3306/machinetodo";
+    private String user = "root";
+    private String password = "";
+    private String dataBase = "machinetodo";
 
     Connection connection;
 
@@ -47,6 +46,7 @@ public class MySqlConnector {
     public ResultSet loginInUser(User user) throws SQLException {
         ResultSet resultSet = null;
         Statement statement = connection.createStatement();
+
         if (!user.getLogin().equals("") && !user.getPassword().equals("")) {
             String query = "SELECT * FROM " + ConstDataBase.usersTable
                     + " WHERE " + ConstDataBase.usersLogin + " = '" + user.getLogin()
@@ -105,6 +105,7 @@ public class MySqlConnector {
 
     public int getAllTasks(int userId) throws SQLException {
         Statement statement = connection.createStatement();
+
         String query = "SELECT COUNT(*) FROM " + ConstDataBase.tasksTable +
                 " WHERE " + ConstDataBase.tasksUserId +
                 "=" + userId + ";";
@@ -129,7 +130,6 @@ public class MySqlConnector {
     }
 
     public void removeTask(int userId, int taskId) throws SQLException {
-
         Statement statement = connection.createStatement();
 
         String query = "DELETE FROM " + ConstDataBase.tasksTable +

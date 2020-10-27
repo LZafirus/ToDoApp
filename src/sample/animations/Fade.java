@@ -10,7 +10,6 @@ public class Fade {
 
     public Fade(Node node) {
         fadeTransition = new FadeTransition(Duration.millis(2000), node);
-
         fadeTransition.setFromValue(1f);
         fadeTransition.setToValue(0f);
         fadeTransition.setCycleCount(2);
@@ -18,5 +17,4 @@ public class Fade {
     }
 
     public void fade() {fadeTransition.playFromStart();}
-
 }

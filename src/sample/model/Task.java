@@ -1,7 +1,5 @@
 package sample.model;
 
-import java.sql.Timestamp;
-
 public class Task {
 
     private String taskName;

@@ -98,7 +98,6 @@ public class CellController extends JFXListCell<Task> {
                 stage.show();
             });
 
-
             cellRemoveImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();
                 try {

@@ -5,7 +5,6 @@ public class User {
     private String lastName;
     private String login;
     private String password;
-    private int id;
 
     public User() { }
 
@@ -21,7 +20,6 @@ public class User {
         this.lastName = lastName;
         this.login = login;
         this.password = password;
-        this.id = id;
     }
 
     public String getFirstName() {
