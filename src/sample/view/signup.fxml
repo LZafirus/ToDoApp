@@ -17,12 +17,12 @@
       </Label>
       <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
          <children>
-            <TextField fx:id="signUpName" layoutX="276.0" layoutY="20.0" prefHeight="31.0" prefWidth="184.0" promptText="Name" />
-            <TextField fx:id="signUpSurname" layoutX="276.0" layoutY="61.0" prefHeight="31.0" prefWidth="184.0" promptText="Surname" />
-            <TextField fx:id="signUpLogin" layoutX="276.0" layoutY="100.0" prefHeight="31.0" prefWidth="184.0" promptText="Login" />
-            <PasswordField fx:id="signUpPassword" layoutX="276.0" layoutY="140.0" prefHeight="31.0" prefWidth="184.0" promptText="Password" />
-            <Button fx:id="signUp" layoutX="340.0" layoutY="271.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="53.0" text="Sign in" /></children>
+            <TextField fx:id="signUpName" layoutX="258.0" layoutY="24.0" prefHeight="31.0" prefWidth="184.0" promptText="Name" />
+            <TextField fx:id="signUpSurname" layoutX="258.0" layoutY="62.0" prefHeight="31.0" prefWidth="184.0" promptText="Surname" />
+            <TextField fx:id="signUpLogin" layoutX="258.0" layoutY="100.0" prefHeight="31.0" prefWidth="184.0" promptText="Login" />
+            <PasswordField fx:id="signUpPassword" layoutX="258.0" layoutY="139.0" prefHeight="31.0" prefWidth="184.0" promptText="Password" /></children>
       </AnchorPane>
+      <Button fx:id="signUp" layoutX="258.0" layoutY="285.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Sign up" textFill="WHITE" />
 
    </children>
 </AnchorPane>

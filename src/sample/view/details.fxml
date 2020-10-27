@@ -7,13 +7,19 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AddItemController">
    <children>
-      <AnchorPane fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="700.0" />
-      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" textAlignment="CENTER" textFill="WHITE">
+      <AnchorPane fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="700.0">
+         <children>
+            <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
+               <children>
+                  <Button fx:id="detailsAddTask" layoutX="258.0" layoutY="44.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Control Panel of your personal To-Do Machine" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="detailsAddTask" layoutX="268.0" layoutY="281.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
       <AnchorPane prefHeight="16.0" prefWidth="700.0" style="-fx-background-color: #321911;" />
    </children>
 </AnchorPane>

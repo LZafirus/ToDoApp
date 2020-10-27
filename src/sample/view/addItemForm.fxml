@@ -10,7 +10,7 @@
    <children>
       <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
          <children>
-            <TextField fx:id="addTaskDesc" layoutX="215.0" layoutY="114.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
+            <TextField fx:id="addTaskDesc" layoutX="215.0" layoutY="88.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
             <TextField fx:id="addTaskName" layoutX="215.0" layoutY="50.0" prefHeight="25.0" prefWidth="271.0" promptText="Task.." />
          </children>
       </AnchorPane>

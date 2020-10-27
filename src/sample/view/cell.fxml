@@ -8,12 +8,12 @@
 
 <AnchorPane fx:id="cellRootPane" prefHeight="124.0" prefWidth="350.0" style="-fx-background-color: #8b6b61;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="cellNameLabel" layoutY="22.0" prefHeight="27.0" prefWidth="350.0" style="-fx-background-color: #5b3f36;" text="Task" textFill="WHITE">
+      <Label fx:id="cellNameLabel" alignment="CENTER" layoutY="22.0" prefHeight="27.0" prefWidth="350.0" style="-fx-background-color: #5b3f36;" text="Task" textFill="WHITE">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="cellDescLabel" layoutY="56.0" prefHeight="27.0" prefWidth="350.0" style="-fx-background-color: #5b3f36;" text="Description" textFill="WHITE">
+      <Label fx:id="cellDescLabel" alignment="CENTER" layoutY="56.0" prefHeight="27.0" prefWidth="350.0" style="-fx-background-color: #5b3f36;" text="Description" textFill="WHITE">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
