@@ -15,7 +15,7 @@
       <AnchorPane prefHeight="16.0" prefWidth="700.0" style="-fx-background-color: #321911;" />
       <AnchorPane layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;">
          <children>
-            <Label fx:id="listLabel" alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="17.0" prefWidth="389.0" text="Personal To-Do MAchine" textFill="WHITE">
+            <Label fx:id="listLabel" alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="17.0" prefWidth="389.0" text="Personal To-Do Machine" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>

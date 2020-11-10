@@ -32,6 +32,9 @@ public class CellController extends JFXListCell<Task> {
     @FXML
     private ImageView cellDoneImgae;
 
+    @FXML
+    private Label cellDateLabel;
+
     private FXMLLoader fxmlLoader;
 
     private MySqlConnector mySqlConnector;
@@ -61,6 +64,7 @@ public class CellController extends JFXListCell<Task> {
             }
             cellNameLabel.setText(item.getTaskName());
             cellDescLabel.setText(item.getTaskDesc());
+            cellDateLabel.setText(item.getDatecreated().toString());
 
             int taskId = item.getTaskId();
 

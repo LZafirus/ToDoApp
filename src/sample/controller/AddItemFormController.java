@@ -13,6 +13,7 @@ import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 public class AddItemFormController {
 
@@ -50,9 +51,14 @@ public class AddItemFormController {
     public void addTask() throws SQLException {
         mySqlConnector = new MySqlConnector();
 
+        Calendar calendar = Calendar.getInstance();
+
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(calendar.getTimeInMillis());
+
+        Task task = new Task();
+
         String taskName = addTaskName.getText().trim();
         String taskDesc = addTaskDesc.getText().trim();
-        Task task = new Task(taskName, taskDesc);
 
         try {
             mySqlConnector.connect();
@@ -65,6 +71,7 @@ public class AddItemFormController {
         task.setTaskName(taskName);
         task.setTaskDesc(taskDesc);
         task.setUserId(getUserId());
+        task.setDatecreated(timestamp);
 
         try {
             mySqlConnector.insertTask(task);
