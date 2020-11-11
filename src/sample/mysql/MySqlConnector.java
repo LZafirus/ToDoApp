@@ -92,7 +92,7 @@ public class MySqlConnector {
         }
     }
 
-    public void updateTask(String name, String desc, int id) throws SQLException {
+    public void updateTask(Timestamp timestamp, String name, String desc, int id) throws SQLException {
         Statement statement = connection.createStatement();
 
         String query = "UPDATE " + ConstDataBase.tasksTable + " SET " +

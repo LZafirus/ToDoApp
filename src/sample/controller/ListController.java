@@ -13,6 +13,7 @@ import sample.mysql.MySqlConnector;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 public class ListController {
 
@@ -52,6 +53,7 @@ public class ListController {
             task.setTaskId(resultSet.getInt("task_id"));
             task.setTaskName(resultSet.getString("task_name"));
             task.setTaskDesc(resultSet.getString("task_desc"));
+            task.setDatecreated(resultSet.getTimestamp("task_date"));
 
             tasks.addAll(task);
         }
@@ -91,6 +93,7 @@ public class ListController {
             task.setTaskId(resultSet.getInt("task_id"));
             task.setTaskName(resultSet.getString("task_name"));
             task.setTaskDesc(resultSet.getString("task_desc"));
+            task.setDatecreated(resultSet.getTimestamp("task_date"));
 
             refreshedTasks.addAll(task);
         }
@@ -106,11 +109,17 @@ public class ListController {
 
         Task task = new Task();
 
+        Calendar calendar = Calendar.getInstance();
+
+        java.sql.Timestamp timestamp =
+                new java.sql.Timestamp(calendar.getTimeInMillis());
+
         mySqlConnector.connect();
 
         task.setTaskName(taskName);
         task.setTaskDesc(taskDesc);
         task.setUserId(AddItemController.userId);
+        task.setDatecreated(timestamp);
 
         mySqlConnector.insertTask(task);
 

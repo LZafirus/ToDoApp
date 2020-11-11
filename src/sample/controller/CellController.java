@@ -14,6 +14,7 @@ import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 public class CellController extends JFXListCell<Task> {
 
@@ -68,6 +69,7 @@ public class CellController extends JFXListCell<Task> {
 
             int taskId = item.getTaskId();
 
+// -------------------------------------------------------------------------------------
 
             cellDoneImgae.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();
@@ -93,14 +95,22 @@ public class CellController extends JFXListCell<Task> {
                 updateController.setUpdateTaskDesc(item.getTaskDesc());
 
                 updateController.updateSaveButton.setOnAction(event1 -> {
+
+                    Calendar calendar = Calendar.getInstance();
+
+                    java.sql.Timestamp timestamp =
+                            new java.sql.Timestamp(calendar.getTimeInMillis());
+
                     try {
-                        mySqlConnector.updateTask(updateController.getTaskName(), updateController.getTaskDesc(), item.getTaskId());
+                        mySqlConnector.updateTask(timestamp, updateController.getTaskName(), updateController.getTaskDesc(), item.getTaskId());
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
                 });
                 stage.show();
             });
+
+// -----------------------------------------------------------------------------------
 
             cellRemoveImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();

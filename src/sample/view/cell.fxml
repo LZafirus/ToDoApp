@@ -30,6 +30,7 @@
                   <Image url="@../assets/task_remove.png" />
                </image>
             </ImageView>
+            <Label fx:id="cellDateLabel" layoutX="187.0" layoutY="-1.0" prefHeight="17.0" prefWidth="158.0" text="Date:" />
          </children></AnchorPane>
       <AnchorPane prefHeight="16.0" prefWidth="350.0" style="-fx-background-color: #321911;" />
    </children>
