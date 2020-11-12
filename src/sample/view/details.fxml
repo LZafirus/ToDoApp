@@ -11,11 +11,12 @@
          <children>
             <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
                <children>
-                  <Button fx:id="detailsAddTask" layoutX="258.0" layoutY="44.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
+                  <Button fx:id="detailsAddTask" layoutX="58.0" layoutY="45.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
+                  <Button fx:id="detailsTaskList" layoutX="58.0" layoutY="108.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Task list" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Control Panel of your personal To-Do Machine" textAlignment="CENTER" textFill="WHITE">
+      <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Control Panel" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
