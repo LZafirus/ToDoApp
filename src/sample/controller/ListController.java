@@ -100,6 +100,7 @@ public class ListController {
 
         listListView.setItems(refreshedTasks);
         listListView.setCellFactory(CellController -> new CellController());
+        // test
 
     }
 
