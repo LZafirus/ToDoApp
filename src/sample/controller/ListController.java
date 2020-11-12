@@ -35,6 +35,9 @@ public class ListController {
     @FXML
     private Button listSaveButton;
 
+    @FXML
+    private Button listBackMainButton;
+
     private ObservableList<Task> tasks;
     private ObservableList<Task> refreshedTasks;
 
@@ -46,7 +49,7 @@ public class ListController {
         mySqlConnector = new MySqlConnector();
         tasks = FXCollections.observableArrayList();
         mySqlConnector.connect();
-        ResultSet resultSet = mySqlConnector.getTasksByUser(AddItemController.userId);
+        ResultSet resultSet = mySqlConnector.getTasksByUser(MainPageController.userId);
 
         while (resultSet.next()) {
             Task task = new Task();
@@ -86,7 +89,7 @@ public class ListController {
         refreshedTasks = FXCollections.observableArrayList();
         mySqlConnector.connect();
 
-        ResultSet resultSet = mySqlConnector.getTasksByUser(AddItemController.userId);
+        ResultSet resultSet = mySqlConnector.getTasksByUser(MainPageController.userId);
 
         while (resultSet.next()) {
             Task task = new Task();
@@ -119,7 +122,7 @@ public class ListController {
 
         task.setTaskName(taskName);
         task.setTaskDesc(taskDesc);
-        task.setUserId(AddItemController.userId);
+        task.setUserId(MainPageController.userId);
         task.setDatecreated(timestamp);
 
         mySqlConnector.insertTask(task);

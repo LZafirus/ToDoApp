@@ -37,6 +37,7 @@
             <TextField fx:id="listTaskName" layoutX="14.0" layoutY="64.0" prefHeight="25.0" prefWidth="271.0" promptText="Task.." />
             <TextField fx:id="listTaskDesc" layoutX="14.0" layoutY="100.0" prefHeight="25.0" prefWidth="271.0" promptText="Description.,." />
             <Button fx:id="listSaveButton" layoutX="58.0" layoutY="153.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Save" textFill="WHITE" />
+            <Button fx:id="listBackMainButton" layoutX="58.0" layoutY="195.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Back to main" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

@@ -11,18 +11,27 @@ import sample.animations.Shaker;
 
 import java.io.IOException;
 
-public class AddItemController {
+public class MainPageController {
 
     public static int userId;
 
     @FXML
-    private Label detailsWelcome;
+    private AnchorPane rootAnchorPane;
 
     @FXML
     private Button detailsAddTask;
 
     @FXML
-    private AnchorPane rootAnchorPane;
+    private Button detailsTaskList;
+
+    @FXML
+    private Button detailsFridgeAdd;
+
+    @FXML
+    private Button detailsFridgeList;
+
+    @FXML
+    private Label detailsWelcome;
 
     @FXML
     void initialize() {

@@ -82,7 +82,7 @@ public class AddItemFormController {
         addingLabelSucess.setVisible(true);
         todosButton.setVisible(true);
 
-        int taskNumber = mySqlConnector.getAllTasks(AddItemController.userId);
+        int taskNumber = mySqlConnector.getAllTasks(MainPageController.userId);
         todosButton.setText("Back to list. Total: " + taskNumber);
 
         addTaskName.setText("");

@@ -116,7 +116,7 @@ public class CellController extends JFXListCell<Task> {
                 mySqlConnector = new MySqlConnector();
                 try {
                     mySqlConnector.connect();
-                    mySqlConnector.removeTask(AddItemController.userId, taskId);
+                    mySqlConnector.removeTask(MainPageController.userId, taskId);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (SQLException throwables) {

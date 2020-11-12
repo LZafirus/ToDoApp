@@ -100,7 +100,7 @@ public class LoginController {
     private void showAddItemScreen(){
         loginSignUp.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/view/details.fxml"));
+        loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
 
         try {
             loader.load();
@@ -114,8 +114,8 @@ public class LoginController {
         stage.setScene(new Scene(root));
 
         //TODO check more about loader.getController()
-        AddItemController addItemController = loader.getController();
-        addItemController.setUserId(userId);
+        MainPageController mainPageController = loader.getController();
+        mainPageController.setUserId(userId);
 
         stage.showAndWait();
     }
