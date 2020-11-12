@@ -34,6 +34,9 @@ public class MainPageController {
     private Label detailsWelcome;
 
     @FXML
+    private Button detailsClose;
+
+    @FXML
     void initialize() {
 
         detailsAddTask.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {

@@ -31,7 +31,7 @@ public class CellController extends JFXListCell<Task> {
     private ImageView cellRemoveImage;
 
     @FXML
-    private ImageView cellDoneImgae;
+    private ImageView cellDoneImage;
 
     @FXML
     private Label cellDateLabel;
@@ -71,7 +71,7 @@ public class CellController extends JFXListCell<Task> {
 
 // -------------------------------------------------------------------------------------
 
-            cellDoneImgae.setOnMouseClicked(event -> {
+            cellDoneImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();
 
                 FXMLLoader loader = new FXMLLoader();

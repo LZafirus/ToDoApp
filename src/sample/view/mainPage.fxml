@@ -18,6 +18,7 @@
                   <Label layoutX="165.0" layoutY="14.0" />
                </children>
             </AnchorPane>
+            <Button fx:id="detailsClose" layoutX="258.0" layoutY="308.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Close" textFill="WHITE" />
          </children></AnchorPane>
       <Label id="detailsWelcomeLabel" fx:id="detailsWelcome" alignment="CENTER" layoutY="16.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Control Panel" textAlignment="CENTER" textFill="WHITE">
          <font>

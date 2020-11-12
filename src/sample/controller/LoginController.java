@@ -50,10 +50,8 @@ public class LoginController {
 
             try {
                 connector.connect();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
             }
 
             try {
@@ -67,7 +65,6 @@ public class LoginController {
             }
 
             if (counter == 1) {
-                System.out.println("Successfully login");
                 showAddItemScreen();
             } else {
                 Shaker shakerLogin = new Shaker(loginUsername);

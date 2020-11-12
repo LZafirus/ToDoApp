@@ -3,16 +3,22 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import sample.model.Task;
 import sample.mysql.MySqlConnector;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 
 public class ListController {
@@ -83,6 +89,15 @@ public class ListController {
                 e.printStackTrace();
             }
         });
+
+        listBackMainButton.setOnMouseClicked(event -> {
+            try {
+                showMainPage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
     }
 
     public void refreshTasks() throws SQLException, ClassNotFoundException {
@@ -131,5 +146,18 @@ public class ListController {
         listTaskDesc.setText("");
 
         initialize();
+    }
+
+    //@todo Finish this part.
+    public void showMainPage() throws IOException {
+        listBackMainButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
+
+        loader.load();
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
     }
 }

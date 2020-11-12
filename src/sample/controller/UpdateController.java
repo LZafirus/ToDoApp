@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class UpdateController {
 
@@ -22,6 +23,16 @@ public class UpdateController {
     @FXML
     void initialize() {
 
+        updateSaveButton.setOnMouseClicked(event -> {
+            closingWindow(updateSaveButton);
+
+        });
+
+    }
+
+    public void closingWindow(Button button){
+        Stage stage = (Stage)button.getScene().getWindow();
+        stage.close();
     }
 
     public void setTaskName(String taskName) {
