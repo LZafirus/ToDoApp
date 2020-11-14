@@ -92,7 +92,7 @@ public class ListController {
 
         listBackMainButton.setOnMouseClicked(event -> {
             try {
-                showMainPage();
+                showMainPage(listBackMainButton);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -149,8 +149,8 @@ public class ListController {
     }
 
     //@todo Finish this part.
-    public void showMainPage() throws IOException {
-        listBackMainButton.getScene().getWindow().hide();
+    public void showMainPage(Button button) throws IOException {
+        button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
 
@@ -159,5 +159,6 @@ public class ListController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.show();
     }
 }

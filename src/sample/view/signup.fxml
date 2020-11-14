@@ -24,6 +24,7 @@
       </AnchorPane>
       <Button fx:id="signUp" layoutX="258.0" layoutY="285.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Sign up" textFill="WHITE" />
       <Button fx:id="signUpBack" layoutX="258.0" layoutY="325.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Back" textFill="WHITE" />
+      <Label fx:id="signUpAddedLabel" layoutX="456.0" layoutY="28.0" prefHeight="17.0" prefWidth="222.0" text="User added.." textFill="WHITE" visible="false" />
 
    </children>
 </AnchorPane>

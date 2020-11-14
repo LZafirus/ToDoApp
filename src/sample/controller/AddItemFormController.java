@@ -46,9 +46,26 @@ public class AddItemFormController {
                 throwables.printStackTrace();
             }
         });
+
+        todosButton.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/list.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
     }
 
     public void addTask() throws SQLException {
+
         mySqlConnector = new MySqlConnector();
 
         Calendar calendar = Calendar.getInstance();
@@ -88,21 +105,6 @@ public class AddItemFormController {
         addTaskName.setText("");
         addTaskDesc.setText("");
 
-        todosButton.setOnAction(event -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/view/list.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
 
     }
 

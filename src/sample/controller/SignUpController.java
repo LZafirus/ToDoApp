@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.animations.Fade;
 import sample.model.User;
 import sample.mysql.MySqlConnector;
 
@@ -35,9 +37,19 @@ public class SignUpController {
     private Button signUpBack;
 
     @FXML
+    private Label signUpAddedLabel;
+
+    Fade fade;
+
+    @FXML
     void initialize() {
         signUp.setOnAction(event -> {
             createUser();
+            signUpAddedLabel.setText("User " + signUpName.getText() + " added.");
+            signUpAddedLabel.setVisible(true);
+
+            fade = new Fade(signUpAddedLabel);
+            fade.fade();
         });
 
         signUpBack.setOnAction(event -> {
