@@ -1,12 +1,17 @@
 package sample.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.model.User;
 import sample.mysql.MySqlConnector;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class SignUpController {
@@ -27,10 +32,34 @@ public class SignUpController {
     private Button signUp;
 
     @FXML
+    private Button signUpBack;
+
+    @FXML
     void initialize() {
         signUp.setOnAction(event -> {
             createUser();
         });
+
+        signUpBack.setOnAction(event -> {
+            getBack(signUpBack);
+        });
+    }
+
+    private void getBack(Button button) {
+        button.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/login.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private void createUser() {
@@ -57,5 +86,4 @@ public class SignUpController {
             throwables.printStackTrace();
         }
     }
-
 }

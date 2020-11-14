@@ -23,6 +23,7 @@
             <PasswordField fx:id="signUpPassword" layoutX="258.0" layoutY="139.0" prefHeight="31.0" prefWidth="184.0" promptText="Password" /></children>
       </AnchorPane>
       <Button fx:id="signUp" layoutX="258.0" layoutY="285.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Sign up" textFill="WHITE" />
+      <Button fx:id="signUpBack" layoutX="258.0" layoutY="325.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Back" textFill="WHITE" />
 
    </children>
 </AnchorPane>

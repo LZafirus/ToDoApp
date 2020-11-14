@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import sample.animations.Fade;
 import sample.animations.Shaker;
 
@@ -61,6 +62,15 @@ public class MainPageController {
                 e.printStackTrace();
             }
         });
+
+        detailsClose.setOnMouseClicked(event -> {
+            closingWindow(detailsClose);
+        });
+    }
+
+    public void closingWindow(Button button){
+        Stage stage = (Stage)button.getScene().getWindow();
+        stage.close();
     }
 
     public void setUserId(int userId) {

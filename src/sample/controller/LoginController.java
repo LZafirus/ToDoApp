@@ -65,7 +65,7 @@ public class LoginController {
             }
 
             if (counter == 1) {
-                showAddItemScreen();
+                showMainPage();
             } else {
                 Shaker shakerLogin = new Shaker(loginUsername);
                 Shaker shakerPassword = new Shaker(loginPassword);
@@ -94,7 +94,7 @@ public class LoginController {
         });
     }
 
-    private void showAddItemScreen(){
+    private void showMainPage(){
         loginSignUp.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
