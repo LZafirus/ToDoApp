@@ -40,5 +40,7 @@ public class FridgeListController {
     void initialize() {
 
 
+
+
     }
 }

@@ -101,12 +101,32 @@ public class MainPageController {
         detailsClose.setOnMouseClicked(event -> {
             closingWindow(detailsClose);
         });
+
+        detailsFridgeList.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/fridgeList.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            closingWindow(detailsFridgeList);
+        });
     }
 
     public void closingWindow(Button button){
         Stage stage = (Stage)button.getScene().getWindow();
         stage.close();
     }
+
+
 
     public void setUserId(int userId) {
         this.userId = userId;
