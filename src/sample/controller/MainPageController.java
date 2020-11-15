@@ -2,13 +2,12 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.animations.Fade;
-import sample.animations.Shaker;
 
 import java.io.IOException;
 
@@ -40,27 +39,63 @@ public class MainPageController {
     @FXML
     void initialize() {
 
-        detailsAddTask.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Shaker labelShaker = new Shaker(detailsAddTask);
-            labelShaker.shake();
+        detailsAddTask.setOnAction(event -> {
 
-            detailsAddTask.relocate(0, 25);
-            detailsAddTask.setOpacity(0);
-            detailsAddTask.setText("Adding..");
-
-            Fade fadeTransition = new Fade(detailsAddTask);
-            fadeTransition.fade();
-
-
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/addItemForm.fxml"));
             try {
-                AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
-                //TODO search more this one to understand
+                loader.load();
                 AddItemFormController.userId = getUserId();
-
-                rootAnchorPane.getChildren().setAll(formPane);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+//            Shaker labelShaker = new Shaker(detailsAddTask);
+//            labelShaker.shake();
+//
+//            detailsAddTask.relocate(0, 25);
+//            detailsAddTask.setOpacity(0);
+//            detailsAddTask.setText("Adding..");
+//
+//            Fade fadeTransition = new Fade(detailsAddTask);
+//            fadeTransition.fade();
+
+
+//            try {
+//                AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
+//
+//                AddItemFormController.userId = getUserId();
+//
+//                rootAnchorPane.getChildren().setAll(formPane);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+            closingWindow(detailsAddTask);
+
+        });
+
+        detailsTaskList.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/list.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            closingWindow(detailsTaskList);
         });
 
         detailsClose.setOnMouseClicked(event -> {

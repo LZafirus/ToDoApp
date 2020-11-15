@@ -13,6 +13,7 @@ import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 
 public class AddItemFormController {
@@ -31,6 +32,9 @@ public class AddItemFormController {
 
     @FXML
     private Button todosButton;
+
+    @FXML
+    private Button addTaskBackButton;
 
     public static int userId;
 
@@ -61,6 +65,26 @@ public class AddItemFormController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
+            closeWindows(todosButton);
+        });
+
+        addTaskBackButton.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            closeWindows(todosButton);
         });
     }
 
@@ -105,6 +129,12 @@ public class AddItemFormController {
         addTaskName.setText("");
         addTaskDesc.setText("");
 
+
+    }
+
+    private void closeWindows(Button button){
+        Stage stage = (Stage)button.getScene().getWindow();
+        stage.close();
 
     }
 
