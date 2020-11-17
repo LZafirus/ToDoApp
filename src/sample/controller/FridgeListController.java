@@ -1,20 +1,22 @@
 package sample.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import sample.model.Product;
+import sample.model.ShoppingList;
+
+import java.io.IOException;
 
 public class FridgeListController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TextField frdigeNameField;
@@ -29,26 +31,59 @@ public class FridgeListController {
     private Button frdigeRemoveButton;
 
     @FXML
-    private Button frdigeAddButton1;
+    private Label fridgeLabel;
 
     @FXML
-    private Button frdigeRemoveButton1;
+    private Button listAddButton;
+
+    @FXML
+    private Button listRemoveButton;
+
+    @FXML
+    private Label listLabel;
 
     @FXML
     private Label frdigeFridgeLabel;
 
     @FXML
-    private ListView<?> frdigeFridgeList;
+    private ListView<Product> frdigeFridgeList;
 
     @FXML
     private Label frdigeShopListLabel;
 
     @FXML
-    private ListView<?> frdigeShopList;
+    private ListView<ShoppingList> frdigeShopList;
 
     @FXML
-    void initialize() {
+    private ImageView fridgeImageBack;
+
+    @FXML
+    void initialize() throws IOException {
 
 
+
+
+
+
+        fridgeImageBack.setOnMouseClicked(event -> {
+            try {
+                showMainPage(fridgeImageBack);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void showMainPage(ImageView image) throws IOException {
+        image.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/mainPage.fxml"));
+
+        loader.load();
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

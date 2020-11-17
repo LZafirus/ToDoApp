@@ -148,7 +148,6 @@ public class ListController {
         initialize();
     }
 
-    //@todo Finish this part.
     public void showMainPage(Button button) throws IOException {
         button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();

@@ -7,12 +7,10 @@ import java.sql.*;
 
 public class MySqlConnector {
 
-    //TODO I am aware that this is not safe - only for testing if working reasons
-
-    private String url = "jdbc:mysql://localhost:3306/machinetodo";
-    private String user = "root";
-    private String password = "";
-    private String dataBase = "machinetodo";
+    private final String url = "jdbc:mysql://localhost:3306/machinetodo";
+    private final String user = "root";
+    private final String password = "";
+    private final String dataBase = "machinetodo";
 
     Connection connection;
 
