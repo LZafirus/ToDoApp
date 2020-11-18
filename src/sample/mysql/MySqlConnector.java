@@ -1,5 +1,7 @@
 package sample.mysql;
 
+import sample.model.Product;
+import sample.model.ShoppingList;
 import sample.model.Task;
 import sample.model.User;
 
@@ -22,7 +24,7 @@ public class MySqlConnector {
         return connection;
     }
 
-    public void signUpUser(User user) throws SQLException {
+    public void signUpUser(User user) {
 
         try {
             Statement statement = connection.createStatement();
@@ -69,7 +71,7 @@ public class MySqlConnector {
         return resultSet;
     }
 
-    public void insertTask(Task task) throws SQLException {
+    public void insertTask(Task task) {
         try {
             Statement statement = connection.createStatement();
 
@@ -79,10 +81,49 @@ public class MySqlConnector {
                     + ConstDataBase.tasksName + ", "
                     + ConstDataBase.tasksDesc +
                     ") VALUES ("
-                    //@todo connection user - task via ID
                     + task.getUserId() + ", '"
                     + task.getTaskName() + "', '"
                     + task.getTaskDesc() + "');";
+            statement.execute(insert);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void insertProducts(Product product) {
+        try {
+            Statement statement = connection.createStatement();
+
+            String insert = "INSERT INTO " + ConstDataBase.productsTable +
+                    " ("
+                    + ConstDataBase.productUserID + ", "
+                    + ConstDataBase.productName + ", "
+                    + ConstDataBase.productQuantity +
+                    ") VALUES ("
+                    + product.getUser_id() + ", '"
+                    + product.getName() + "', '"
+                    + product.getQuantity() + "');";
+            statement.execute(insert);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void insertIntoShoppingList(ShoppingList list) {
+        try {
+            Statement statement = connection.createStatement();
+
+            String insert = "INSERT INTO " + ConstDataBase.shoppingListTable +
+                    " ("
+                    + ConstDataBase.shoppingUserID + ", "
+                    + ConstDataBase.shoppingName + ", "
+                    + ConstDataBase.shoppingQuantity +
+                    ") VALUES ("
+                    + list.getUserId() + ", '"
+                    + list.getName() + "', '"
+                    + list.getQuantity() + "');";
             statement.execute(insert);
 
         } catch (SQLException throwables) {
@@ -108,7 +149,6 @@ public class MySqlConnector {
                 " WHERE " + ConstDataBase.tasksUserId +
                 "=" + userId + ";";
         ResultSet resultSet = statement.executeQuery(query);
-        //TODO more research about double resultset
         while (resultSet.next()) {
             return resultSet.getInt(1);
         }
@@ -122,6 +162,28 @@ public class MySqlConnector {
 
         String query = "SELECT * FROM " + ConstDataBase.tasksTable
                 + " WHERE " + ConstDataBase.usersId + " = " + userId + ";";
+        resultTasks = statement.executeQuery(query);
+
+        return resultTasks;
+    }
+
+    public ResultSet getProductsByUser(int userId) throws SQLException {
+        ResultSet resultTasks = null;
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM " + ConstDataBase.productsTable
+                + " WHERE " + ConstDataBase.productUserID + " = " + userId + ";";
+        resultTasks = statement.executeQuery(query);
+
+        return resultTasks;
+    }
+
+    public ResultSet getShoppingByUser(int userId) throws SQLException {
+        ResultSet resultTasks = null;
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM " + ConstDataBase.shoppingListTable
+                + " WHERE " + ConstDataBase.shoppingUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
 
         return resultTasks;

@@ -54,28 +54,6 @@ public class MainPageController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-//            Shaker labelShaker = new Shaker(detailsAddTask);
-//            labelShaker.shake();
-//
-//            detailsAddTask.relocate(0, 25);
-//            detailsAddTask.setOpacity(0);
-//            detailsAddTask.setText("Adding..");
-//
-//            Fade fadeTransition = new Fade(detailsAddTask);
-//            fadeTransition.fade();
-
-
-//            try {
-//                AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
-//
-//                AddItemFormController.userId = getUserId();
-//
-//                rootAnchorPane.getChildren().setAll(formPane);
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
             closingWindow(detailsAddTask);
 
         });

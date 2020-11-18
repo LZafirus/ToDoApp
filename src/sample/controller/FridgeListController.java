@@ -1,6 +1,8 @@
 package sample.controller;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,8 +15,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.model.Product;
 import sample.model.ShoppingList;
+import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class FridgeListController {
 
@@ -57,11 +62,29 @@ public class FridgeListController {
     @FXML
     private ImageView fridgeImageBack;
 
+    private ObservableList<Product> products;
+    private ObservableList<ShoppingList> shoppingList;
+
+    private MySqlConnector connector;
+
     @FXML
-    void initialize() throws IOException {
+    void initialize() throws IOException, SQLException, ClassNotFoundException {
 
+        connector = new MySqlConnector();
+        connector.connect();
+        products = FXCollections.observableArrayList();
+        ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
 
+        while (resultSet.next()) {
+            Product product = new Product();
+            product.setProduct_id(resultSet.getInt("product_id"));
+            product.setName(resultSet.getString("name"));
+            product.setQuantity(resultSet.getString("quantity"));
 
+            products.addAll(product);
+        }
+
+        frdigeFridgeList.setItems(products);
 
 
 

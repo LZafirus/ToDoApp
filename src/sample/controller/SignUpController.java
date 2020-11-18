@@ -92,10 +92,6 @@ public class SignUpController {
 
         User user = new User(name, surname, login, password);
 
-        try {
-            connector.signUpUser(user);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        connector.signUpUser(user);
     }
 }

@@ -114,11 +114,7 @@ public class AddItemFormController {
         task.setUserId(getUserId());
         task.setDatecreated(timestamp);
 
-        try {
-            mySqlConnector.insertTask(task);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        mySqlConnector.insertTask(task);
 
         addingLabelSucess.setVisible(true);
         todosButton.setVisible(true);
