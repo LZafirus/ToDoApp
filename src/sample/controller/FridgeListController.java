@@ -77,9 +77,9 @@ public class FridgeListController {
 
         while (resultSet.next()) {
             Product product = new Product();
-            product.setProduct_id(resultSet.getInt("product_id"));
+            //product.setProduct_id(resultSet.getInt("product_id"));
             product.setName(resultSet.getString("name"));
-            product.setQuantity(resultSet.getString("quantity"));
+            //product.setQuantity(resultSet.getString("quantity"));
 
             products.addAll(product);
         }

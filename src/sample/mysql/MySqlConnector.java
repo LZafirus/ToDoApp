@@ -171,7 +171,7 @@ public class MySqlConnector {
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
-        String query = "SELECT * FROM " + ConstDataBase.productsTable
+        String query = "SELECT name FROM " + ConstDataBase.productsTable
                 + " WHERE " + ConstDataBase.productUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
 
