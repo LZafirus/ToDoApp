@@ -171,11 +171,25 @@ public class MySqlConnector {
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
-        String query = "SELECT name FROM " + ConstDataBase.productsTable
+        String query = "SELECT * FROM " + ConstDataBase.productsTable
                 + " WHERE " + ConstDataBase.productUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
 
         return resultTasks;
+    }
+    public String getProductName(int userId) throws SQLException {
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT name FROM " + ConstDataBase.productsTable +
+                " WHERE " + ConstDataBase.productUserID +
+                "=" + userId + ";";
+        ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+
+        return resultSet.getString(1);
+
     }
 
     public ResultSet getShoppingByUser(int userId) throws SQLException {

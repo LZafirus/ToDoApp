@@ -51,7 +51,7 @@ public class FridgeListController {
     private Label frdigeFridgeLabel;
 
     @FXML
-    private ListView<Product> frdigeFridgeList;
+    private ListView<String> frdigeFridgeList;
 
     @FXML
     private Label frdigeShopListLabel;
@@ -62,7 +62,7 @@ public class FridgeListController {
     @FXML
     private ImageView fridgeImageBack;
 
-    private ObservableList<Product> products;
+    private ObservableList<String> products;
     private ObservableList<ShoppingList> shoppingList;
 
     private MySqlConnector connector;
@@ -73,18 +73,22 @@ public class FridgeListController {
         connector = new MySqlConnector();
         connector.connect();
         products = FXCollections.observableArrayList();
-        ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
+        //ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
 
-        while (resultSet.next()) {
-            Product product = new Product();
-            //product.setProduct_id(resultSet.getInt("product_id"));
-            product.setName(resultSet.getString("name"));
-            //product.setQuantity(resultSet.getString("quantity"));
-
-            products.addAll(product);
-        }
-
+        String resultSet1 = connector.getProductName(MainPageController.userId);
+        products.addAll(resultSet1);
         frdigeFridgeList.setItems(products);
+
+//        while (resultSet.next()) {
+//            Product product = new Product();
+//            //product.setProduct_id(resultSet.getInt("product_id"));
+//            product.setName(resultSet.getString("name"));
+//            //product.setQuantity(resultSet.getString("quantity"));
+//
+//            products.addAll(product);
+//        }
+//
+//        frdigeFridgeList.setItems(products);
 
 
 
