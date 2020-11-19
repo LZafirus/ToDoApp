@@ -1,11 +1,13 @@
 package sample.mysql;
 
+import javafx.collections.ObservableList;
 import sample.model.Product;
 import sample.model.ShoppingList;
 import sample.model.Task;
 import sample.model.User;
 
 import java.sql.*;
+import java.util.Observable;
 
 public class MySqlConnector {
 
@@ -177,6 +179,22 @@ public class MySqlConnector {
 
         return resultTasks;
     }
+
+    public String[] getProducts(int userId) throws SQLException {
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT name FROM " + ConstDataBase.productsTable +
+                " WHERE " + ConstDataBase.productUserID +
+                "=" + userId + ";";
+        ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+
+            return new String[]{resultSet.getString(1)};
+        }
+
+
+    }
+
     public String getProductName(int userId) throws SQLException {
         Statement statement = connection.createStatement();
 
@@ -196,7 +214,7 @@ public class MySqlConnector {
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
-        String query = "SELECT * FROM " + ConstDataBase.shoppingListTable
+        String query = "SELECT name FROM " + ConstDataBase.shoppingListTable
                 + " WHERE " + ConstDataBase.shoppingUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
 
