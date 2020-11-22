@@ -15,25 +15,31 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.model.Product;
 import sample.model.ShoppingList;
+import sample.mysql.ConstDataBase;
 import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class FridgeListController {
 
     @FXML
-    private TextField frdigeNameField;
+    private TextField fridgeNameField;
 
     @FXML
-    private TextField frdigeQuantityField;
+    private TextField fridgeQuantityField;
 
     @FXML
-    private Button frdigeAddButton;
+    private ImageView fridgeImageBack;
 
     @FXML
-    private Button frdigeRemoveButton;
+    private Button fridgeAddButton;
+
+    @FXML
+    private Button fridgeRemoveButton;
 
     @FXML
     private Label fridgeLabel;
@@ -48,22 +54,20 @@ public class FridgeListController {
     private Label listLabel;
 
     @FXML
-    private Label frdigeFridgeLabel;
+    private Label fridgeFridgeLabel;
 
     @FXML
-    private ListView<String> frdigeFridgeList;
+    private ListView<Product> fridgeFridgeList;
 
     @FXML
-    private Label frdigeShopListLabel;
+    private Label fridgeShopListLabel;
 
     @FXML
-    private ListView<String[]> frdigeShopList;
+    private ListView<ShoppingList> fridgeShopList;
 
-    @FXML
-    private ImageView fridgeImageBack;
 
-    private ObservableList<String> products;
-    private ObservableList<String[]> shoppingList;
+    private ObservableList<Product> products;
+    private ObservableList<ShoppingList> shoppingList;
 
     private MySqlConnector connector;
 
@@ -73,15 +77,29 @@ public class FridgeListController {
         connector = new MySqlConnector();
         connector.connect();
         products = FXCollections.observableArrayList();
-        //ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
+        ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
+        
+        while (resultSet.next()) {
+            Product product = new Product();
+            product.setProduct_id(resultSet.getInt("product_id"));
+            product.setName(resultSet.getString("name"));
+            product.setQuantity(resultSet.getString("quantity"));
+            product.setUser_id(resultSet.getInt("user_id"));
+            products.addAll(product);
+        }
 
-        String resultSet1 = connector.getProductName(MainPageController.userId);
-        products.addAll(resultSet1);
-        frdigeFridgeList.setItems(products);
+        fridgeFridgeList.setItems(products);
 
-        String[] result = connector.getProducts(MainPageController.userId);
-        shoppingList.addAll(result);
-        frdigeShopList.setItems(result);
+       // ResultSet resultSet = connector.getProducts(MainPageController.userId);
+
+
+//        String resultSet1 = connector.getProductName(MainPageController.userId);
+//        products.addAll(resultSet1);
+//        frdigeFridgeList.setItems(products);
+
+        //String[] result = connector.getProducts(MainPageController.userId);
+        //shoppingList.addAll(result);
+        //frdigeShopList.setItems(result);
 
 //        shoppingList = FXCollections.observableArrayList();
 //        ResultSet resultSet = connector.getShoppingByUser(MainPageController.userId);

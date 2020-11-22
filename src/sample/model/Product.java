@@ -45,4 +45,14 @@ public class Product {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_id=" + product_id +
+                ", name='" + name + '\'' +
+                ", quantity='" + quantity + '\'' +
+                ", user_id=" + user_id +
+                '}';
+    }
 }

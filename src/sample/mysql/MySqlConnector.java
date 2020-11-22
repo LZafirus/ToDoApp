@@ -144,6 +144,14 @@ public class MySqlConnector {
 
     }
 
+    public void updateProduct() {
+
+    }
+
+    public void updateShoppingList() {
+
+    }
+
     public int getAllTasks(int userId) throws SQLException {
         Statement statement = connection.createStatement();
 
@@ -176,38 +184,7 @@ public class MySqlConnector {
         String query = "SELECT * FROM " + ConstDataBase.productsTable
                 + " WHERE " + ConstDataBase.productUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
-
         return resultTasks;
-    }
-
-    public String[] getProducts(int userId) throws SQLException {
-        Statement statement = connection.createStatement();
-
-        String query = "SELECT name FROM " + ConstDataBase.productsTable +
-                " WHERE " + ConstDataBase.productUserID +
-                "=" + userId + ";";
-        ResultSet resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-
-            return new String[]{resultSet.getString(1)};
-        }
-
-
-    }
-
-    public String getProductName(int userId) throws SQLException {
-        Statement statement = connection.createStatement();
-
-        String query = "SELECT name FROM " + ConstDataBase.productsTable +
-                " WHERE " + ConstDataBase.productUserID +
-                "=" + userId + ";";
-        ResultSet resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-            return resultSet.getString(1);
-        }
-
-        return resultSet.getString(1);
-
     }
 
     public ResultSet getShoppingByUser(int userId) throws SQLException {
