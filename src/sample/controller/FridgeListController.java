@@ -18,6 +18,7 @@ import sample.model.ShoppingList;
 import sample.mysql.ConstDataBase;
 import sample.mysql.MySqlConnector;
 
+import javax.print.attribute.ResolutionSyntax;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -67,7 +68,7 @@ public class FridgeListController {
 
 
     private ObservableList<Product> products;
-    private ObservableList<ShoppingList> shoppingList;
+    private ObservableList<ShoppingList> listForShop;
 
     private MySqlConnector connector;
 
@@ -77,8 +78,9 @@ public class FridgeListController {
         connector = new MySqlConnector();
         connector.connect();
         products = FXCollections.observableArrayList();
+        listForShop = FXCollections.observableArrayList();
+
         ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
-        
         while (resultSet.next()) {
             Product product = new Product();
             product.setProduct_id(resultSet.getInt("product_id"));
@@ -87,41 +89,18 @@ public class FridgeListController {
             product.setUser_id(resultSet.getInt("user_id"));
             products.addAll(product);
         }
-
         fridgeFridgeList.setItems(products);
 
-       // ResultSet resultSet = connector.getProducts(MainPageController.userId);
-
-
-//        String resultSet1 = connector.getProductName(MainPageController.userId);
-//        products.addAll(resultSet1);
-//        frdigeFridgeList.setItems(products);
-
-        //String[] result = connector.getProducts(MainPageController.userId);
-        //shoppingList.addAll(result);
-        //frdigeShopList.setItems(result);
-
-//        shoppingList = FXCollections.observableArrayList();
-//        ResultSet resultSet = connector.getShoppingByUser(MainPageController.userId);
-//        while (resultSet.next()) {
-//            ShoppingList shopping = new ShoppingList();
-//            shopping.setName(resultSet.getString("name"));
-//            shoppingList.addAll(shopping);
-//        }
-//        frdigeShopList.setItems(shoppingList);
-
-
-//        while (resultSet.next()) {
-//            Product product = new Product();
-//            //product.setProduct_id(resultSet.getInt("product_id"));
-//            product.setName(resultSet.getString("name"));
-//            //product.setQuantity(resultSet.getString("quantity"));
-//
-//            products.addAll(product);
-//        }
-//
-//        frdigeFridgeList.setItems(products);
-
+        ResultSet resultSet1 = connector.getShoppingByUser(MainPageController.userId);
+        while (resultSet1.next()) {
+            ShoppingList shoppingList = new ShoppingList();
+            shoppingList.setShoppingId(resultSet1.getInt("product_id"));
+            shoppingList.setName(resultSet1.getString("name"));
+            shoppingList.setQuantity(resultSet1.getString("quantity"));
+            shoppingList.setUserId(resultSet1.getInt("user_id"));
+            listForShop.addAll(shoppingList);
+        }
+        fridgeShopList.setItems(listForShop);
 
 
         fridgeImageBack.setOnMouseClicked(event -> {

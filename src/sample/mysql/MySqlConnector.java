@@ -139,7 +139,7 @@ public class MySqlConnector {
         String query = "UPDATE " + ConstDataBase.tasksTable + " SET " +
                 ConstDataBase.tasksName + "='" + name + "', " +
                 ConstDataBase.tasksDesc + "='" + desc + "' WHERE " +
-                ConstDataBase.tasksTaskId + "=" + id +";";
+                ConstDataBase.tasksTaskId + "=" + id + ";";
         statement.execute(query);
 
     }
@@ -191,7 +191,7 @@ public class MySqlConnector {
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
-        String query = "SELECT name FROM " + ConstDataBase.shoppingListTable
+        String query = "SELECT * FROM " + ConstDataBase.shoppingListTable
                 + " WHERE " + ConstDataBase.shoppingUserID + " = " + userId + ";";
         resultTasks = statement.executeQuery(query);
 
@@ -203,9 +203,17 @@ public class MySqlConnector {
 
         String query = "DELETE FROM " + ConstDataBase.tasksTable +
                 " WHERE " + ConstDataBase.usersId + " = " + userId +
-                " AND " + ConstDataBase.tasksTaskId + " = " +  + taskId +
+                " AND " + ConstDataBase.tasksTaskId + " = " + +taskId +
                 ";";
         statement.execute(query);
+
+    }
+
+    public void removeProduct(int userId, int productId) {
+
+    }
+
+    public void removeShoppingListItem(int userId, int itemId) {
 
     }
 
