@@ -22,8 +22,8 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #b53d00;">
                            <children>
-                              <TextField fx:id="fridgeNameField" layoutX="26.0" layoutY="42.0" promptText="Name.." />
-                              <TextField fx:id="fridgeQuantityField" layoutX="26.0" layoutY="77.0" promptText="Quantity.." />
+                              <TextField fx:id="fridgeNameField" layoutX="16.0" layoutY="42.0" prefHeight="25.0" prefWidth="168.0" promptText="Name.." />
+                              <TextField fx:id="fridgeQuantityField" layoutX="16.0" layoutY="79.0" prefHeight="25.0" prefWidth="168.0" promptText="Quantity.." />
                               <ImageView fx:id="fridgeImageBack" fitHeight="31.0" fitWidth="65.0" layoutX="11.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/left.png" />

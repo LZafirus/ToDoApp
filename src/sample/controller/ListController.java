@@ -118,8 +118,6 @@ public class ListController {
 
         listListView.setItems(refreshedTasks);
         listListView.setCellFactory(CellController -> new CellController());
-        // test
-
     }
 
     public void addNewTask() throws SQLException, ClassNotFoundException {

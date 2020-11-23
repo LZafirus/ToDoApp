@@ -15,15 +15,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.model.Product;
 import sample.model.ShoppingList;
-import sample.mysql.ConstDataBase;
 import sample.mysql.MySqlConnector;
 
-import javax.print.attribute.ResolutionSyntax;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class FridgeListController {
 
@@ -35,6 +31,9 @@ public class FridgeListController {
 
     @FXML
     private ImageView fridgeImageBack;
+
+    @FXML
+    private ImageView fridgeImageRefresh;
 
     @FXML
     private Button fridgeAddButton;
@@ -68,7 +67,9 @@ public class FridgeListController {
 
 
     private ObservableList<Product> products;
+    private ObservableList<Product> refreshedProducts;
     private ObservableList<ShoppingList> listForShop;
+    private ObservableList<ShoppingList> refreshedListForShop;
 
     private MySqlConnector connector;
 
@@ -103,6 +104,32 @@ public class FridgeListController {
         fridgeShopList.setItems(listForShop);
 
 
+        fridgeAddButton.setOnMouseClicked(event -> {
+            addNewProduct();
+
+            try {
+                refreshKitchen();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+        listAddButton.setOnMouseClicked(event -> {
+            addNewShopping();
+
+            try {
+                refreshKitchen();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+
+
         fridgeImageBack.setOnMouseClicked(event -> {
             try {
                 showMainPage(fridgeImageBack);
@@ -110,6 +137,65 @@ public class FridgeListController {
                 e.printStackTrace();
             }
         });
+    }
+
+    public void addNewProduct() {
+        String name = fridgeNameField.getText().trim();
+        String quantity = fridgeQuantityField.getText().trim();
+
+        Product product = new Product();
+        product.setName(name);
+        product.setQuantity(quantity);
+        product.setUser_id(MainPageController.userId);
+
+        connector.insertProducts(product);
+        fridgeNameField.setText("");
+        fridgeQuantityField.setText("");
+    }
+
+    public void addNewShopping() {
+        String name = fridgeNameField.getText().trim();
+        String quantity = fridgeQuantityField.getText().trim();
+
+        ShoppingList shop = new ShoppingList();
+        shop.setName(name);
+        shop.setQuantity(quantity);
+        shop.setUserId(MainPageController.userId);
+
+        connector.insertIntoShoppingList(shop);
+        fridgeNameField.setText("");
+        fridgeQuantityField.setText("");
+    }
+
+    public void refreshKitchen() throws SQLException, ClassNotFoundException {
+        refreshedProducts = FXCollections.observableArrayList();
+        connector.connect();
+        ResultSet resultSet = connector.getProductsByUser(MainPageController.userId);
+
+        while (resultSet.next()) {
+            Product product = new Product();
+            product.setProduct_id(resultSet.getInt("product_id"));
+            product.setName(resultSet.getString("name"));
+            product.setQuantity(resultSet.getString("quantity"));
+            product.setUser_id(resultSet.getInt("user_id"));
+            refreshedProducts.addAll(product);
+        }
+        fridgeFridgeList.setItems(refreshedProducts);
+
+
+        refreshedListForShop = FXCollections.observableArrayList();
+        ResultSet resultSet1 = connector.getShoppingByUser(MainPageController.userId);
+
+        while(resultSet1.next()) {
+            ShoppingList shoppingList = new ShoppingList();
+            shoppingList.setShoppingId(resultSet1.getInt("product_id"));
+            shoppingList.setName(resultSet1.getString("name"));
+            shoppingList.setQuantity(resultSet1.getString("quantity"));
+            shoppingList.setUserId(resultSet1.getInt("user_id"));
+
+            refreshedListForShop.addAll(shoppingList);
+        }
+        fridgeShopList.setItems(refreshedListForShop);
     }
 
     public void showMainPage(ImageView image) throws IOException {
