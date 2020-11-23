@@ -209,12 +209,26 @@ public class MySqlConnector {
 
     }
 
-    public void removeProduct(int userId, int productId) {
+    public void removeProduct(int userId, int productId) throws SQLException {
+        Statement statement = connection.createStatement();
 
+        String query = "DELETE FROM " + ConstDataBase.productsTable +
+                " WHERE " + ConstDataBase.productUserID + " = " + userId +
+                " AND " + ConstDataBase.productId + " = " + productId +
+                ";";
+
+        statement.execute(query);
     }
 
-    public void removeShoppingListItem(int userId, int itemId) {
+    public void removeShoppingListItem(int userId, int itemId) throws SQLException {
+        Statement statement = connection.createStatement();
 
+        String query = "DELETE FROM " + ConstDataBase.shoppingListTable +
+                " WHERE " + ConstDataBase.shoppingUserID + " = " + userId +
+                " AND " + ConstDataBase.shoppingProductID + " = " + itemId +
+                ";";
+
+        statement.execute(query);
     }
 
     public void disconnect() throws SQLException {

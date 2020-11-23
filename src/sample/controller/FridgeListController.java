@@ -109,10 +109,8 @@ public class FridgeListController {
 
             try {
                 refreshKitchen();
-            } catch (SQLException throwables) {
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
         });
 
@@ -122,10 +120,8 @@ public class FridgeListController {
 
             try {
                 refreshKitchen();
-            } catch (SQLException throwables) {
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
         });
 
@@ -135,6 +131,23 @@ public class FridgeListController {
                 showMainPage(fridgeImageBack);
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+
+        fridgeRemoveButton.setOnMouseClicked(event -> {
+            try {
+                connector.removeProduct(MainPageController.userId,  );
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+
+        listRemoveButton.setOnMouseClicked(event -> {
+            try {
+                connector.removeShoppingListItem(MainPageController.userId,  );
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         });
     }

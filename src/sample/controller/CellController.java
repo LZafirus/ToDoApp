@@ -80,10 +80,8 @@ public class CellController extends JFXListCell<Task> {
                 try {
                     mySqlConnector.connect();
                     loader.load();
-                } catch (ClassNotFoundException e) {
+                } catch (ClassNotFoundException | SQLException | IOException e) {
                     e.printStackTrace();
-                } catch (SQLException | IOException throwables) {
-                    throwables.printStackTrace();
                 }
 
                 Parent root = loader.getRoot();
@@ -117,10 +115,8 @@ public class CellController extends JFXListCell<Task> {
                 try {
                     mySqlConnector.connect();
                     mySqlConnector.removeTask(MainPageController.userId, taskId);
-                } catch (ClassNotFoundException e) {
+                } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
                 }
                 getListView().getItems().remove(getItem());
             });
