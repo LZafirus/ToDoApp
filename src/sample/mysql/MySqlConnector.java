@@ -1,13 +1,11 @@
 package sample.mysql;
 
-import javafx.collections.ObservableList;
 import sample.model.Product;
 import sample.model.ShoppingList;
 import sample.model.Task;
 import sample.model.User;
 
 import java.sql.*;
-import java.util.Observable;
 
 public class MySqlConnector {
 

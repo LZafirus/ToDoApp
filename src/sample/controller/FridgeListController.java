@@ -103,6 +103,10 @@ public class FridgeListController {
         }
         fridgeShopList.setItems(listForShop);
 
+        fridgeRemoveButton.setOnMouseClicked(event -> {
+            fridgeFridgeList.getSelectionModel().getSelectedItems();
+
+        });
 
         fridgeAddButton.setOnMouseClicked(event -> {
             addNewProduct();
@@ -114,7 +118,6 @@ public class FridgeListController {
             }
         });
 
-
         listAddButton.setOnMouseClicked(event -> {
             addNewShopping();
 
@@ -124,7 +127,6 @@ public class FridgeListController {
                 throwables.printStackTrace();
             }
         });
-
 
         fridgeImageBack.setOnMouseClicked(event -> {
             try {
@@ -136,8 +138,10 @@ public class FridgeListController {
 
         fridgeRemoveButton.setOnMouseClicked(event -> {
             try {
-                connector.removeProduct(MainPageController.userId,  );
-            } catch (SQLException throwables) {
+                int id = products.get(fridgeFridgeList.getSelectionModel().getSelectedIndex()).getProduct_id();
+                connector.removeProduct(MainPageController.userId, id);
+                refreshKitchen();
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
 
@@ -145,8 +149,10 @@ public class FridgeListController {
 
         listRemoveButton.setOnMouseClicked(event -> {
             try {
-                connector.removeShoppingListItem(MainPageController.userId,  );
-            } catch (SQLException throwables) {
+                int id = listForShop.get(fridgeShopList.getSelectionModel().getSelectedIndex()).getShoppingId();
+                connector.removeShoppingListItem(MainPageController.userId, id);
+                refreshKitchen();
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
         });
