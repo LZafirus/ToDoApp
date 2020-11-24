@@ -37,7 +37,6 @@ public class LoginController {
 
         loginButton.setOnAction(event -> {
 
-            // TODO: 2020-10-06 check if below Strings should be private or it is ok?
             String loginText = loginUsername.getText().trim();
             String passwordText = loginPassword.getText().trim();
 
@@ -110,7 +109,6 @@ public class LoginController {
         stage.setTitle("Personal To-Do Machine");
         stage.setScene(new Scene(root));
 
-        //TODO check more about loader.getController()
         MainPageController mainPageController = loader.getController();
         mainPageController.setUserId(userId);
 

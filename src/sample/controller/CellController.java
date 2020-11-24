@@ -69,8 +69,6 @@ public class CellController extends JFXListCell<Task> {
 
             int taskId = item.getTaskId();
 
-// -------------------------------------------------------------------------------------
-
             cellDoneImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();
 
@@ -107,8 +105,6 @@ public class CellController extends JFXListCell<Task> {
                 });
                 stage.show();
             });
-
-// -----------------------------------------------------------------------------------
 
             cellRemoveImage.setOnMouseClicked(event -> {
                 mySqlConnector = new MySqlConnector();

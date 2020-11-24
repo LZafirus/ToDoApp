@@ -11,10 +11,10 @@
          <children>
             <AnchorPane layoutY="56.0" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #8b6b61;">
                <children>
-                  <Button fx:id="detailsAddTask" layoutX="87.0" layoutY="45.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
-                  <Button fx:id="detailsTaskList" layoutX="87.0" layoutY="108.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Task list" textFill="WHITE" />
-                  <Button fx:id="detailsFridgeAdd" layoutX="429.0" layoutY="45.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add a product" textFill="WHITE" />
-                  <Button fx:id="detailsFridgeList" layoutX="429.0" layoutY="108.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Fridge list" textFill="WHITE" />
+                  <Button fx:id="detailsAddTask" layoutX="137.0" layoutY="45.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add task" textFill="WHITE" />
+                  <Button fx:id="detailsTaskList" layoutX="137.0" layoutY="107.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Task list" textFill="WHITE" />
+                  <Button fx:id="detailsFridgeAdd" layoutX="429.0" layoutY="45.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Add a product" textFill="WHITE" visible="false" />
+                  <Button fx:id="detailsFridgeList" layoutX="429.0" layoutY="76.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #5b3f36;" text="Fridge list" textFill="WHITE" />
                   <Label layoutX="165.0" layoutY="14.0" />
                </children>
             </AnchorPane>

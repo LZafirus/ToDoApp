@@ -18,7 +18,6 @@ import sample.mysql.MySqlConnector;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Calendar;
 
 public class ListController {
@@ -96,7 +95,6 @@ public class ListController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         });
     }
 

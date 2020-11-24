@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/sample/view/login.fxml"));
-        primaryStage.setTitle("Personal To-Do Machine");
+        primaryStage.setTitle("Personal Managment System");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
 

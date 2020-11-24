@@ -74,7 +74,7 @@ public class FridgeListController {
     private MySqlConnector connector;
 
     @FXML
-    void initialize() throws IOException, SQLException, ClassNotFoundException {
+    void initialize() throws SQLException, ClassNotFoundException {
 
         connector = new MySqlConnector();
         connector.connect();
@@ -105,7 +105,6 @@ public class FridgeListController {
 
         fridgeRemoveButton.setOnMouseClicked(event -> {
             fridgeFridgeList.getSelectionModel().getSelectedItems();
-
         });
 
         fridgeAddButton.setOnMouseClicked(event -> {
@@ -144,7 +143,6 @@ public class FridgeListController {
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
-
         });
 
         listRemoveButton.setOnMouseClicked(event -> {
@@ -200,7 +198,6 @@ public class FridgeListController {
             refreshedProducts.addAll(product);
         }
         fridgeFridgeList.setItems(refreshedProducts);
-
 
         refreshedListForShop = FXCollections.observableArrayList();
         ResultSet resultSet1 = connector.getShoppingByUser(MainPageController.userId);

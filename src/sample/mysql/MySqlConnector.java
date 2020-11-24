@@ -132,6 +132,7 @@ public class MySqlConnector {
     }
 
     public void updateTask(Timestamp timestamp, String name, String desc, int id) throws SQLException {
+
         Statement statement = connection.createStatement();
 
         String query = "UPDATE " + ConstDataBase.tasksTable + " SET " +
@@ -139,7 +140,6 @@ public class MySqlConnector {
                 ConstDataBase.tasksDesc + "='" + desc + "' WHERE " +
                 ConstDataBase.tasksTaskId + "=" + id + ";";
         statement.execute(query);
-
     }
 
     public void updateProduct() {
@@ -160,11 +160,11 @@ public class MySqlConnector {
         while (resultSet.next()) {
             return resultSet.getInt(1);
         }
-
         return resultSet.getInt(1);
     }
 
     public ResultSet getTasksByUser(int userId) throws SQLException {
+
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
@@ -176,6 +176,7 @@ public class MySqlConnector {
     }
 
     public ResultSet getProductsByUser(int userId) throws SQLException {
+
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
@@ -186,6 +187,7 @@ public class MySqlConnector {
     }
 
     public ResultSet getShoppingByUser(int userId) throws SQLException {
+
         ResultSet resultTasks = null;
         Statement statement = connection.createStatement();
 
@@ -197,6 +199,7 @@ public class MySqlConnector {
     }
 
     public void removeTask(int userId, int taskId) throws SQLException {
+
         Statement statement = connection.createStatement();
 
         String query = "DELETE FROM " + ConstDataBase.tasksTable +
@@ -208,6 +211,7 @@ public class MySqlConnector {
     }
 
     public void removeProduct(int userId, int productId) throws SQLException {
+
         Statement statement = connection.createStatement();
 
         String query = "DELETE FROM " + ConstDataBase.productsTable +
@@ -219,6 +223,7 @@ public class MySqlConnector {
     }
 
     public void removeShoppingListItem(int userId, int itemId) throws SQLException {
+
         Statement statement = connection.createStatement();
 
         String query = "DELETE FROM " + ConstDataBase.shoppingListTable +

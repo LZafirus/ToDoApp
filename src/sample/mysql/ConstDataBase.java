@@ -28,5 +28,4 @@ public class ConstDataBase {
     public static final String shoppingName = "name";
     public static final String shoppingQuantity = "quantity";
     public static final String shoppingUserID = "user_id";
-
 }

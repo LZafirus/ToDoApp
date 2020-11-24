@@ -1,10 +1,10 @@
 package sample.model;
 
 public class Product {
-    private int product_id;
     private String name;
     private String quantity;
     private int user_id;
+    private int product_id;
 
     public Product() {
     }

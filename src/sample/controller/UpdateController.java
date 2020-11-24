@@ -25,9 +25,7 @@ public class UpdateController {
 
         updateSaveButton.setOnMouseClicked(event -> {
             closingWindow(updateSaveButton);
-
         });
-
     }
 
     public void closingWindow(Button button){
@@ -50,5 +48,4 @@ public class UpdateController {
     public String getTaskDesc() {
         return this.updateTaskDesc.getText().trim();
     }
-
 }

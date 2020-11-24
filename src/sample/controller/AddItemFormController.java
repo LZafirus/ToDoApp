@@ -13,7 +13,6 @@ import sample.mysql.MySqlConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Calendar;
 
 public class AddItemFormController {
@@ -124,8 +123,6 @@ public class AddItemFormController {
 
         addTaskName.setText("");
         addTaskDesc.setText("");
-
-
     }
 
     private void closeWindows(Button button){
@@ -141,5 +138,4 @@ public class AddItemFormController {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
 }

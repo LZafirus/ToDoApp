@@ -18,5 +18,4 @@ public class Shaker {
     public void shake(){
         translateTransition.playFromStart();
     }
-
 }

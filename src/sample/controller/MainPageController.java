@@ -104,8 +104,6 @@ public class MainPageController {
         stage.close();
     }
 
-
-
     public void setUserId(int userId) {
         this.userId = userId;
         System.out.println("user id is " + this.userId);
