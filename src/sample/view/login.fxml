@@ -13,7 +13,7 @@
       <AnchorPane prefHeight="16.0" prefWidth="700.0" style="-fx-background-color: #321911;" />
       <BorderPane layoutY="16.0" prefHeight="47.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;">
          <left>
-            <Label alignment="CENTER" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Welcome to your personal To-Do Machine" textFill="WHITE" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: #5b3f36;" text="Welcome to your personal Organizer" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>

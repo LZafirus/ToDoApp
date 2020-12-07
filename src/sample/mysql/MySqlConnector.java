@@ -43,6 +43,117 @@ public class MySqlConnector {
         }
     }
 
+    public void creatingDB() throws SQLException {
+        setDataBase();
+        useDB();
+        createTableUsers();
+        createTableTasks();
+        createTableProducts();
+        createTableShoppingList();
+        createUsersTasks();
+        createUsersProducts();
+        createUsersShoppings();
+    }
+
+    public void setDataBase() throws SQLException {
+        Statement statement = connection.createStatement();
+
+        String databaseCreation = "CREATE DATABASE IF NOT EXISTS machinetodo;";
+        statement.execute(databaseCreation);
+    }
+
+    public void useDB() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "USE machinetodo1";
+        statement.execute(database);
+
+    }
+
+    public void createTableUsers() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS users (\n" +
+                "\tuser_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "\tname VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\tsurname VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "    login VARCHAR(100) NOT NULL,\n" +
+                "    password VARCHAR(100) NOT NULL\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createTableTasks() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS tasks (\n" +
+                "\ttask_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "    user_id INT NOT NULL,\n" +
+                "\ttask_name VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\ttask_desc VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\ttask_date TIMESTAMP DEFAULT NOW(),\n" +
+                "\tFOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createTableProducts() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS products (\n" +
+                "\tproduct_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "\tname VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\tquantity VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\tuser_id INT NOT NULL,\n" +
+                "\tFOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createTableShoppingList() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS shopping_list (\n" +
+                "\tproduct_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "\tname VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\tquantity VARCHAR(100) NOT NULL DEFAULT 'None',\n" +
+                "\tuser_id INT NOT NULL,\n" +
+                "\tFOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createUsersTasks() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS users_tasks (\n" +
+                "    user_task_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "    user_id INT NOT NULL,\n" +
+                "    task_id INT NOT NULL,\n" +
+                "    FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,\n" +
+                "    FOREIGN KEY(task_id) REFERENCES tasks(task_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createUsersProducts() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS users_products (\n" +
+                "    user_product_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "    user_id INT NOT NULL,\n" +
+                "    product_id INT NOT NULL,\n" +
+                "    FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,\n" +
+                "    FOREIGN KEY(product_id) REFERENCES products(product_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
+    public void createUsersShoppings() throws SQLException {
+        Statement statement = connection.createStatement();
+        String database = "CREATE TABLE IF NOT EXISTS users_shopping (\n" +
+                "    user_shopping_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+                "    user_id INT NOT NULL,\n" +
+                "    product_id INT NOT NULL,\n" +
+                "    FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE,\n" +
+                "    FOREIGN KEY(product_id) REFERENCES shopping_list(product_id) ON DELETE CASCADE\n" +
+                ");";
+        statement.execute(database);
+    }
+
     public ResultSet loginInUser(User user) throws SQLException {
         ResultSet resultSet = null;
         Statement statement = connection.createStatement();
@@ -140,14 +251,6 @@ public class MySqlConnector {
                 ConstDataBase.tasksDesc + "='" + desc + "' WHERE " +
                 ConstDataBase.tasksTaskId + "=" + id + ";";
         statement.execute(query);
-    }
-
-    public void updateProduct() {
-
-    }
-
-    public void updateShoppingList() {
-
     }
 
     public int getAllTasks(int userId) throws SQLException {
