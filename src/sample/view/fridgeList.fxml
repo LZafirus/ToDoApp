@@ -29,6 +29,11 @@
                                     <Image url="@../assets/left.png" />
                                  </image>
                               </ImageView>
+                              <ImageView fx:id="fridgeRefreshButton" fitHeight="31.0" fitWidth="47.0" layoutX="63.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../assets/arrow-13-512.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ef6c00;">

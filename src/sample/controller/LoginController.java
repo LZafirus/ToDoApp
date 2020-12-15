@@ -33,7 +33,12 @@ public class LoginController {
     private Button loginSignUp;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
+
+        MySqlConnector conn = new MySqlConnector();
+        conn.connect();
+        conn.creatingDB();
+        conn.disconnect();
 
         loginButton.setOnAction(event -> {
 

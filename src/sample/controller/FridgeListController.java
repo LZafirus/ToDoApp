@@ -33,7 +33,7 @@ public class FridgeListController {
     private ImageView fridgeImageBack;
 
     @FXML
-    private ImageView fridgeImageRefresh;
+    private ImageView fridgeRefreshButton;
 
     @FXML
     private Button fridgeAddButton;
@@ -103,36 +103,28 @@ public class FridgeListController {
         }
         fridgeShopList.setItems(listForShop);
 
-        fridgeRemoveButton.setOnMouseClicked(event -> {
-            fridgeFridgeList.getSelectionModel().getSelectedItems();
-        });
+// Buttons for fridge ------------------------------------------------------
 
         fridgeAddButton.setOnMouseClicked(event -> {
             addNewProduct();
 
             try {
-                refreshKitchen();
-            } catch (SQLException | ClassNotFoundException throwables) {
+                initialize();
+            } catch (SQLException throwables) {
                 throwables.printStackTrace();
-            }
-        });
-
-        listAddButton.setOnMouseClicked(event -> {
-            addNewShopping();
-
-            try {
-                refreshKitchen();
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        });
-
-        fridgeImageBack.setOnMouseClicked(event -> {
-            try {
-                showMainPage(fridgeImageBack);
-            } catch (IOException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+            try {
+                refreshKitchen();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+
+        fridgeRemoveButton.setOnMouseClicked(event -> {
+            fridgeFridgeList.getSelectionModel().getSelectedItems();
+
         });
 
         fridgeRemoveButton.setOnMouseClicked(event -> {
@@ -145,6 +137,29 @@ public class FridgeListController {
             }
         });
 
+// Buttons for shopping list ------------------------------------------------------
+
+        listAddButton.setOnMouseClicked(event -> {
+            addNewShopping();
+
+            try {
+                initialize();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                refreshKitchen();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+
+        listRemoveButton.setOnMouseClicked(event -> {
+            fridgeShopList.getSelectionModel().getSelectedItems();
+        });
+
         listRemoveButton.setOnMouseClicked(event -> {
             try {
                 int id = listForShop.get(fridgeShopList.getSelectionModel().getSelectedIndex()).getShoppingId();
@@ -154,6 +169,17 @@ public class FridgeListController {
                 throwables.printStackTrace();
             }
         });
+
+// Buttons for page ----------------------------------------------------------
+
+        fridgeImageBack.setOnMouseClicked(event -> {
+            try {
+                showMainPage(fridgeImageBack);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void addNewProduct() {
