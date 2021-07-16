@@ -9,10 +9,10 @@ import java.sql.*;
 
 public class MySqlConnector {
 
-    private final String url = "jdbc:mysql://localhost:3306/machinetodo1";
-    private final String user = "root";
-    private final String password = "";
-    private final String dataBase = "machinetodo1";
+    private final String url = "xxxxx";
+    private final String user = "xxxx";
+    private final String password = "xxx";
+    private final String dataBase = "xxxx";
 
     Connection connection;
 
